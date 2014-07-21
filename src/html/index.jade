@@ -1,0 +1,42 @@
+extend ./base
+
+block headLinks
+  link(rel="stylesheet", type="text/css", href="css/index.css")
+
+block body
+  header.navbar.navbar-static-top
+    .container
+      .navbar-header 
+        a.navbar-brand 题管家
+
+      nav.collapse.navbar-collapse
+        ul.nav.navbar-nav
+          li 
+            a one
+          li 
+            a two
+          li 
+            a three
+
+        ul.nav.navbar-nav.navbar-right
+          li
+            a four
+          li
+            a five
+
+  section#landing
+    .container
+      h1 Welcome!
+  
+  section#signup
+    .container
+      .row
+        .col-md-4.col-md-offset-4
+          .signup-wrap.card
+            .signup-form-wrap
+              input(type="text" placeholder="邮箱")
+            
+
+
+
+      

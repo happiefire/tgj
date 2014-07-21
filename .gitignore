@@ -3,3 +3,4 @@ docs
 doc
 .tmp
 .sass-cache
+build

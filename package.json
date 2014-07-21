@@ -3,6 +3,7 @@
     "gulp": "latest",
     "gulp-load-plugins": "latest",
     "gulp-webserver": "latest",
+    "gulp-util": "latest",
     "jade": "latest",
     "stylus": "latest",
     "coffee-script": "latest",
