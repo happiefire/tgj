@@ -12,8 +12,8 @@ gulp.task("jade", function(){
 
 
 gulp.task('stylus', function(){
-  gulp.src(['src/css/**/*.styl'])
-    .pipe($.stylus({errors: true}))
+  gulp.src(['src/css/*.styl'])
+    .pipe($.stylus({errors: false}))
     .pipe($.autoprefixer('last 1 version'))
     .pipe(gulp.dest('build/css'));
 });
