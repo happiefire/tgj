@@ -1,0 +1,10 @@
+extend templates/base
+
+block bodyScripts
+  script.
+    function draw (data) {
+      'user strict';
+
+    }
+
+    d3.json("data/data1.json", draw);
