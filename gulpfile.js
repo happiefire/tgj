@@ -5,7 +5,7 @@ var fs = require('fs-extra');
 var gutil = require('gulp-util');
 
 gulp.task("jade", function(){
-  gulp.src(["!src/html/base.jade", "src/html/*.jade"])
+  gulp.src(["!src/html/base.jade", "!src/html/app.jade", "src/html/*.jade"])
   .pipe($.jade({ pretty: true }))
   .pipe(gulp.dest("build"));
 });
