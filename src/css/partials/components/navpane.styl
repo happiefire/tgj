@@ -1,7 +1,8 @@
 .navpane
   width: 100%
   height: 100%
-  background-color: hsla(0deg, 0% 97%, 1)
+  background-color: $gray-lighter
+  border-right: 1px solid $gray-light
 
   .navpane-nav
     ul
@@ -11,13 +12,13 @@
       li
         display: block
 
-.navpane-nav ul li a
+.navpane-nav ul>li>a
   display: block
   font-size: 18px
   padding: 10px 15px
   &:hover, &:focus
     text-decoration: none
-    background-color: #eee
+    background-color: $gray-lightest
 
 .nav-divider 
   height: 1px
