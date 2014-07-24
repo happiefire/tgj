@@ -1,7 +1,17 @@
 extend templates/app
   
+block headLinks
+  style.
+    .file-input-wrap #file-input-field {
+      position: absolute;
+      top: 1px;
+      left: 1px;
+      z-index: -100;
+      opacity: 0;
+    }
+
 block stage
-  form(role="form")
+  form(role="form" style='border: 1px solid red;')
     h1 添加新班级
     .form-group
       label(for="class-name")
@@ -15,9 +25,98 @@ block stage
     //-   label(for="class-teacher")
     //-     |负责老师
     //-     input.form-control#class-teacher(type="text")
-    
-    .form-group
-      label 上传Excel名单
-      input(type="file")
-
+    ul.nav.nav-tabs#name-list-input-method-toggle(role="tablist")
+      li.active#toggle-upload(role="presentation")
+        a
+          |上传名单
+      li#toggle-input(role="presentation")
+        a
+          |输入名单
+    #upload-name-list-view
+      p
+        |目前只接受Excel格式的名单表格(.xls)。
+        br
+        |请确保表格格式如下图所示，第一列为学号，第二列为对应姓名。
+      img.img-thumbnail(src="img/example-excel.png" alt="示例名单" width="300px")
+      .form-group
+        label.file-input-wrap
+          input#file-input-field(type="file" name="date")
+          button.btn.btn-default.btn-block(type="button") 上传Excel名单
+    #input-name-list-view(style="display:none;")
+      table#name-list
+        thead
+          tr
+            th.student-id(scope="col") 学号
+            th.student-name(scope="col") 姓名
+        tbody
+          tr#name-list-row-0
+            td.student-id
+              input(type="text")
+            td.student-name
+              input(type="text")
+          tr#name-list-row-1
+            td.student-id
+              input(type="text")
+            td.student-name
+              input(type="text")
+          tr#name-list-row-2
+            td.student-id
+              input(type="text")
+            td.student-name
+              input(type="text")
+          tr#name-list-row-3
+            td.student-id
+              input(type="text")
+            td.student-name
+              input(type="text")
+          tr#name-list-row-4
+            td.student-id
+              input(type="text")
+            td.student-name
+              input(type="text")
+          tr#name-list-row-5
+            td.student-id
+              input(type="text")
+            td.student-name
+              input(type="text")
+          tr#name-list-row-6
+            td.student-id
+              input(type="text")
+            td.student-name
+              input(type="text")
+          tr#name-list-row-7
+            td.student-id
+              input(type="text")
+            td.student-name
+              input(type="text")
+          tr#name-list-row-8
+            td.student-id
+              input(type="text")
+            td.student-name
+              input(type="text")
+          tr#name-list-row-9
+            td.student-id
+              input(type="text")
+            td.student-name
+              input(type="text")
+      a.append-rows.btn 新增5行空表格
     button.btn.btn-default(type="submit") 确定
+
+
+block bodyScripts
+  script.
+    $("input[type='file']").on('click',function(){
+      $("button[type='button']").trigger('click');  
+    });
+    $('li#toggle-upload').on('click', function(){
+      $('#upload-name-list-view').show();
+      $('#input-name-list-view').hide();
+      $(this).addClass('active');
+      $('li#toggle-input').removeClass('active');
+    });
+    $('li#toggle-input').on('click',function(){
+      $('#input-name-list-view').show();
+      $('#upload-name-list-view').hide();
+      $(this).addClass('active');
+      $('li#toggle-upload').removeClass('active');
+    });
