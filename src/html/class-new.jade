@@ -1,27 +1,23 @@
-extend ./app
-block stage-navbar
-  li
-    span.glypjicon.gliphicon-chevron-left
-    a 返回
+extend templates/app
+  
 block stage
   form(role="form")
     h1 添加新班级
     .form-group
       label(for="class-name")
-        h3 班级名称
+        |班级名称
         input.form-control#class-name(type="text")
     .form-group
-      label(for="class-teacher")
-        h3 负责老师
-        input.form-control#class-teacher(type="text")
-    .form-group
       label(for="class-comment")
-        h3 备注
+        |备注
         input.form-control#class-comment(type="text")
+    //- .form-group
+    //-   label(for="class-teacher")
+    //-     |负责老师
+    //-     input.form-control#class-teacher(type="text")
+    
     .form-group
       label 上传Excel名单
       input(type="file")
 
-    button.btn.btn-default(type="submit") 上传Excel名单
-    br
     button.btn.btn-default(type="submit") 确定
