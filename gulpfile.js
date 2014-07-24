@@ -27,7 +27,7 @@ gulp.task('coffee', function() {
 
 
 gulp.task('copy', function() {
-  gulp.src(['src/**/*', '!src/html', '!src/html/**/*', '!src/**/*.jade', '!src/**/*.styl', '!src/**/*.coffee'])
+  gulp.src(['src/css/vendor', 'src/js/', 'src/img/', 'src/data'])
     .pipe(gulp.dest('build'));
   gulp.src(['src/html/*.html'])
     .pipe(gulp.dest('build'));
