@@ -48,19 +48,25 @@ html
           
         .stage
           form(role="form" style='border: 1px solid red;')
-            h1 添加新班级
-            .form-group
-              label(for="class-name")
-                |班级名称
-                input.form-control#class-name(type="text")
-            .form-group
-              label(for="class-comment")
-                |备注
-                input.form-control#class-comment(type="text")
-            //- .form-group
-            //-   label(for="class-teacher")
-            //-     |负责老师
-            //-     input.form-control#class-teacher(type="text")
+            h1 添加教师
+            //- .dropdown
+            //-   button.btn.btn-default.dropdown-toggle#dropdownMenu1(type="button" data-toggle="dropdown") 请选择教师
+            //-     span.caret
+            //-   ul.dropdown-menu(role="menu" aria-labelledby="dropdownMenu1")
+            //-     li.dropdown-header(role="presentation")
+            //-       a(role="menuitem" tabindex="-1" href="#") 请选择教师
+            //-     li(role="presentation")
+            //-       a(role="menuitem" tabindex="-1" href="#") 张烁
+            //-     li(role="presentation")
+            //-       a(role="menuitem" tabindex="-1" href="#") 孙佳俊
+            //-     li(role="presentation")
+            //-       a(role="menuitem" tabindex="-1" href="#") 王银峰
+            //-     li(role="presentation")
+            //-       a(role="menuitem" tabindex="-1" href="#") 其他
+            select
+              option(value="0" selected="true") 请选择教师
+              option(value="1") 张烁
+              option(value="2") 孙佳俊
             ul.nav.nav-tabs#name-list-input-method-toggle(role="tablist")
               li.active#toggle-upload(role="presentation")
                 a
@@ -72,7 +78,7 @@ html
               p
                 |目前只接受Excel格式的名单表格(.xls)。
                 br
-                |请确保表格格式如下图所示，第一列为学号，第二列为对应姓名。
+                |请确保表格格式如下图所示，第一列为教师姓名，第二列为联系方式，第三列为备注。
               img.img-thumbnail(src="img/example-excel.png" alt="示例名单" width="300px")
               .form-group
                 label.file-input-wrap
@@ -82,62 +88,19 @@ html
               table#name-list
                 thead
                   tr
-                    th.student-id(scope="col") 学号
-                    th.student-name(scope="col") 姓名
+                    th.teacher-name(scope="col") 教师姓名
+                    th.teacher-tel(scope="col") 联系方式
+                    th.teacher-comment(scope="col") 备注
                 tbody
                   tr#name-list-row-0
-                    td.student-id
+                    td.teacher-name
                       input(type="text")
-                    td.student-name
+                    td.teacher-tel
                       input(type="text")
-                  tr#name-list-row-1
-                    td.student-id
+                    td.teacher-comment
                       input(type="text")
-                    td.student-name
-                      input(type="text")
-                  tr#name-list-row-2
-                    td.student-id
-                      input(type="text")
-                    td.student-name
-                      input(type="text")
-                  tr#name-list-row-3
-                    td.student-id
-                      input(type="text")
-                    td.student-name
-                      input(type="text")
-                  tr#name-list-row-4
-                    td.student-id
-                      input(type="text")
-                    td.student-name
-                      input(type="text")
-                  tr#name-list-row-5
-                    td.student-id
-                      input(type="text")
-                    td.student-name
-                      input(type="text")
-                  tr#name-list-row-6
-                    td.student-id
-                      input(type="text")
-                    td.student-name
-                      input(type="text")
-                  tr#name-list-row-7
-                    td.student-id
-                      input(type="text")
-                    td.student-name
-                      input(type="text")
-                  tr#name-list-row-8
-                    td.student-id
-                      input(type="text")
-                    td.student-name
-                      input(type="text")
-                  tr#name-list-row-9
-                    td.student-id
-                      input(type="text")
-                    td.student-name
-                      input(type="text")
-              a.append-rows.btn 新增5行空表格
-            button.btn.btn-default(type="submit") 确定
-          
+              a.append-rows.btn 新增1行空表格
+            button.btn.btn-default(type="submit") 确定          
     
     script(type="text/javascript", src="js/vendor/jquery.min.js")
     script(type="text/javascript", src="js/vendor/bootstrap.min.js")
