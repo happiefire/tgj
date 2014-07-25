@@ -1,4 +1,8 @@
 doctype html
+
+block config
+  - var ngIsOn = false
+
 html
   head
     title 题管家
@@ -7,13 +11,14 @@ html
     meta(name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui")
     link(rel="stylesheet", type="text/css", href="css/vendor/bootstrap.min.css")
     link(rel="stylesheet", type="text/css", href="css/main.css")
-    script(type="text/javascript", src="js/vendor/d3.min.js")
+    // script(type="text/javascript", src="js/vendor/d3.min.js")
 
     block headLinks
     block headScripts
 
+
   body
-      
+        
     block body
     
     script(type="text/javascript", src="js/vendor/jquery.min.js")
