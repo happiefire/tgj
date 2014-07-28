@@ -4,3 +4,5 @@ doc
 .tmp
 .sass-cache
 build
+*.scss
+*.sass

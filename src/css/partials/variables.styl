@@ -1,22 +1,107 @@
 /* ====================
  * Variables content list in order:
- * seach "#x" with x a number to lookup desired sections
+ * search "#x" with x a number to lookup desired sections
+ * search "#top" to get back here
 
-  1. Swatch - colors
-  2. Components
+  0. Swatch - colors
+  1. Generals
+  2. App parts
+  3. Components
 
  * ==================== */
 
-// #1 Swatch
-$gray-light = #cccccc
-$gray-lighter = #eeeeee
-$gray-lightest = #f9f9f9
 
-$gray-dark = #555555
-$gray-darker = #333333
-$gray-darkest = #262626
 
-$border-color = $gray-lighter
+// ********************
+// #0 Swatch
+// ********************
+gray($n=100%)
+  lighten(#000000, $n)
 
-// #2 Components
+// Gray 
+$gray = gray(60)
+
+$gray-light = gray(80)
+$gray-lighter = gray(93)
+$gray-lightest = gray(98)
+
+$gray-dark = gray(33)
+$gray-darker = gray(20)
+$gray-darkest = gray(15)
+
+
+// Themes
+$theme-blue = #4da7db
+
+
+// ********************
+// #1 Generals
+// ********************
+
+// Typography
+
+$font-color = $gray-darker
+$font-color-light = $gray
+$link-color = $theme-blue
+$link-hover-color = darken($link-color, 10%)
+
+$font-family = "Helvetica Neue", "Helvetica", Arial, "Hiragino Sans GB", "Microsoft YaHei", sans-serif
+$font-size = 14px
+$font-size-small = 12px
+$line-height = 1.5
+$line-height-px = ($line-height * $font-size)
+
+$headings-font-weight = normal
+$headings-line-height = 1.2
+
+
+// Border
+$border-radius = 3px
+$border-color = $gray-light
+
+
+// Spacing
+$padding-vrt = 8px
+$padding-hrz = 12px
+$padding-vrt-lg = 10px
+$padding-hrz-lg = 12px
+
+
+
+// ********************
+// #2 App parts
+// ********************
+
 $navpane-width = 200px
+
+
+
+// ********************
+// #3 Components
+// ********************
+
+// Buttons
+$btn-padding-vrt = 8px
+$btn-padding-hrz = 16px
+$btn-color = $gray-lighter
+// $btn-name-color-map = (
+//   dark hsl(0, 0, 40), 
+//   blue $theme,
+//   red  #e85c41
+//   )
+
+// Forms and inputs
+// $input-height = ($line-height-px + $padding-vrt * 2 + 2)
+// $pb-gap = 4px
+
+// // Checkbox & Radio
+// $standard-size = 24px
+// $radio-size = $standard-size
+// $checkbox-size = $standard-size
+// $checkbox-toggle-height = $standard-size
+// $checkbox-toggle-width = 48px
+
+// // console Compounents
+// $console-nav-color = #f2f2f2
+// $console-nav-width = 240px
+// $navbar-height = 40px

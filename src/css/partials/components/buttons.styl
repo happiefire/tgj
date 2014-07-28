@@ -1,0 +1,63 @@
+button, .btn {
+  display: inline-block;
+  font-weight: normal;
+  text-align: center;
+  cursor: pointer;
+  white-space: nowrap;
+  margin-bottom: 0px;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  border: 1px solid transparent;
+  border-radius: $border-radius;
+
+  padding: $btn-padding-vrt $btn-padding-hrz;
+  height: $font-size*$line-height + $btn-padding-vrt*2 + 2px;
+
+  color: $font-color;
+  background-color: $btn-color;
+
+  &:hover {
+    color: $font-color;
+    text-decoration: none;
+    background-color: darken($btn-color, 3.5%);
+  }
+  &:focus {
+    color: $font-color;
+    text-decoration: none;
+    outline: #aaa dotted thin;
+    outline-offset: -5px;
+  }
+
+  &:active,
+  &.active {
+    background-color: darken($btn-color, 7%);;
+  }
+
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    cursor: not-allowed;
+    pointer-events: none; // Future-proof disabling of clicks
+    opacity: 0.65;
+    box-shadow: none;
+  }
+}
+
+.block-btn, .btn-block {
+  width: 100%;
+}
+
+
+// @each $name-color in $btn-name-color-map {
+//   .btn-#{ nth($name-color, 1) } {
+//     background-color: nth($name-color, 2);
+//     color: #ffffff; 
+//     &:hover { 
+//       background-color: darken( nth($name-color, 2), 7%); 
+//       color: #ffffff; 
+//     }
+//   }
+// }
+
