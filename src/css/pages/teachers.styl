@@ -1,8 +1,21 @@
+.stage-container
+  // max-width: 600px
+
 .each-teacher
-  background-color: #fff
-  height: 50px
-  _border(1px)
+  @extend .card-style
+  display: inline-block
+  height: 200px
+  width: 250px
   margin-bottom: 10px
-  line-height: 50px
-  padding: 0 10px
-  
+  &+&
+    margin-left: 20px  
+  & > div, h1, h2, h3
+    padding: 0 $padding-hrz
+
+  .teacher-name
+    // font-size: 18px
+  .teacher-class
+    // width: 10%
+  .teacher-subject
+    // text-align: right
+    // width: 10%

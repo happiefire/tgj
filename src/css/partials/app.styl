@@ -7,20 +7,21 @@
   height: 100%
   margin-left: $navpane-width
 
-
-
-
-.stage-toolbar
-  background-color: $gray-lighter
-  border-color: $gray-light
-  border-radius: 0
-  margin-bottom: 0
-  min-height: 50px
-  padding: 8px 20px
-
 .stage
   background-color: $gray-lightest
   min-height: 900px
   padding: 20px
   padding-top: 10px
 
+.stage-toolbar
+  _border-bottom()
+  margin-bottom: 0
+  height: 50px
+  .btn-bar
+    display: inline-block
+    height: 49px
+    line-height: 49px
+    cursor: pointer;
+    padding: 0 $btn-padding-hrz;
+    &:hover
+      background-color: $gray-lighter
