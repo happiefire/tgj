@@ -1,122 +1,41 @@
-doctype html
+extend templates/app
 
-html
-  head
-    title 题管家
-    meta(charset="utf-8")
-    meta(http-equiv="X-UA-Compatible",content="IE=edge")
-    meta(name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui")
-    script(type="text/javascript", src="js/vendor/jquery.min.js")
-    link(rel="stylesheet", type="text/css", href="css/vendor/bootstrap.min.css")
-    script(type="text/javascript", src="js/vendor/bootstrap.min.js")
-    link(rel="stylesheet", type="text/css", href="css/main.css")
-    style.
-      .file-input-wrap #file-input-field {
-        position: absolute;
-        top: 1px;
-        left: 1px;
-        z-index: -100;
-        opacity: 0;
-      }
+block config
+  - var ngIsOn = true
+  - var ng = {app: "classesNew"}
 
-  body
+block stage-toolbar
+  .stage-toolbar
     
-    .app-wrap(ng-app="")
-      
-      .navpane-wrap
-        .navpane
-          nav.navpane-nav
-            ul
-              li
-                a(style="height: 49px;") 返回
-            .nav-divider(style="margin-top: 0;")
-            ul
-              li
-                a 教师管理
-              li
-                a 班级与学员管理
-              li
-                a 统计项目
-              li
-                a 设置
-          .brand
-            hr
-            .logo
-              |题管家
-
-      .main-wrap
-      
-        .stage-toolbar
+block stage
+  .stage(ng-controller="")
+    form(role="form" )
+      h1 创建新班级
+      .form-group
+        label(for="class-name")
+          |名称
+          input.form-control#class-name(type="text")
+      .form-group
+        label(for="class-teacher")
+          |老师
+          input.form-control#class-teacher(type="text")
+        button.btn.btn-default#class-teacher(type="button" data-container="body" data-toggle="popover" data-placement="right" title="请选择老师" data-content="teachers") 选择
+      .form-group
+        label(for="class-subject")
+          |科目
+          input.form-control#class-comment(type="text")
+      .form-group
+        label(for="class-comment")
+          |备注
+          input.form-control#class-comment(type="text")
+      .form-group
+          .checkbox
+            label
+              input(type="checkbox") 
+              |批准加入？
+      button.btn.btn-default(type="submit") 确定创建
           
-        .stage
-          form(role="form" )
-            h1 创建新班级
-            .form-group
-              label(for="class-name")
-                |名称
-                input.form-control#class-name(type="text")
-            .form-group
-              label(for="class-teacher")
-                |老师
-                input.form-control#class-teacher(type="text")
-              button.btn.btn-default#class-teacher(type="button" data-container="body" data-toggle="popover" data-placement="right" title="请选择老师" data-content="teachers") 选择
-            .form-group
-              label(for="class-subject")
-                |科目
-                input.form-control#class-comment(type="text")
-            .form-group
-              label(for="class-comment")
-                |备注
-                input.form-control#class-comment(type="text")
-            .form-group
-                .checkbox
-                  label
-                    input(type="checkbox") 
-                    |批准加入？
-            //- 班级邀请码XXXX/有效时间/发邮件
+        
 
-
-            //- .form-group
-            //-   label(for="class-teacher")
-            //-     |负责老师
-            //-     input.form-control#class-teacher(type="text")
-            //- ul.nav.nav-tabs#name-list-input-method-toggle(role="tablist")
-            //-   li.active#toggle-upload(role="presentation")
-            //-     a
-            //-       |上传名单
-            //-   li#toggle-input(role="presentation")
-            //-     a
-            //-       |输入名单
-            //- #upload-name-list-view
-            //-   p
-            //-     |目前只接受Excel格式的名单表格(.xls)。
-            //-     br
-            //-     |请确保表格格式如下图所示，第一列为学号，第二列为对应姓名。
-            //-   img.img-thumbnail(src="img/example-excel.png" alt="示例名单" width="300px")
-            //-   .form-group
-            //-     label.file-input-wrap
-            //-       input#file-input-field(type="file" name="date")
-            //-       button.btn.btn-default.btn-block(type="button") 上传Excel名单
-            //- #input-name-list-view(style="display:none;")
-            //-   table#name-list
-            //-     thead
-            //-       tr
-            //-         th.student-id(scope="col") 学号
-            //-         th.student-name(scope="col") 姓名
-            //-     tbody
-            //-       tr#name-list-row-0
-            //-         td.student-id
-            //-           input(type="text")
-            //-         td.student-name
-            //-           input(type="text")
-                  
-            //-   a.append-rows.btn 新增5行空表格
-            button.btn.btn-default(type="submit") 确定创建
-          
-    
-    script(type="text/javascript", src="js/vendor/jquery.min.js")
-    script(type="text/javascript", src="js/vendor/bootstrap.min.js")
-    script(type="text/javascript", src="js/vendor/angular.min.js")
-    script(type="text/javascript", src="js/class-new.js")
-
-    
+block bodyScripts
+  script(type="text/javascript", src="js/class-new.js")
