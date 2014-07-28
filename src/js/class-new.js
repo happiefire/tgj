@@ -13,10 +13,12 @@ $('li#toggle-input').on('click',function(){
   $(this).addClass('active');
   $('li#toggle-upload').removeClass('active');
 });
+$('button#class-teacher').popover({
+  placement:"right",
+  delay: { "show": 500, "hide": 100 },
+  template: '<div class="popover" role="tooltip"><div class="arrow"></div><h1 class="popover-title"></h1><div class="popover-content"></div></div>'
 
-
-
-
+});
 
 
 
