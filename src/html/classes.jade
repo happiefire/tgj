@@ -1,21 +1,35 @@
 extend templates/app
 
-block bodyTop
-  .dev-notes
-    h3 班级列表视图
-    p 就是列表状列出班级信息，作为查看各个班级的入口
-
+block config
+  - var ngIsOn = true
+  - var ng = {app: "classes"}
 
 block stage-toolbar
   .stage-toolbar
+    .form-inline.text-center
+      .form-group
+        .input-group
+          div.input-group-addon 
+            i.glyphicon.glyphicon-search
+          input.form-control(type="text" placeholder="搜索" style='width: 300px;')
+      .form-group.pull-right
+        a.btn-bar(href="teachers-new.html") 添加教师
+  
 
 block stage
   .stage
-    
+    div( ng-controller = "ClassController as classInfo")
+      div( ng-repeat = "group in classInfo.info")
+        //- h3(ng-show = "group.hasTag()") {{group.tag}}
+        h3 {{group.tag}}
+        div( ng-repeat = "class in group.class")
+          div 
+            span {{class.name}}
+            span {{class.size + '人'}}
+            span {{class.teacher}}
+            //- span
+            //-   {{class.status}}
+          
 
-
-
-
-
-
-
+block bodyScripts
+  script(src="js/classes.js")
