@@ -13,7 +13,7 @@ block stage-toolbar
             i.glyphicon.glyphicon-search
           input.form-control(type="text" placeholder="搜索" style='width: 300px;')
       .form-group.pull-right
-        a.btn.btn-primary 添加教师
+        a.btn-bar 添加教师
   
 
 block stage
@@ -22,10 +22,9 @@ block stage
       .teacher-group(ng-repeat="group in teachers.groupsList")
         h2 {{group.groupName}}
         .each-teacher(ng-repeat="teacher in group.members")
-          i.teacher-ui-handle :
-          i.teacher-name {{teacher.name}}
-          i.teacher-class {{teacher.classNum}}个班级
-          i.teacher-subject {{teacher.subject}}
+          h3.teacher-name {{teacher.name}}
+          .teacher-class {{teacher.classNum}}个班级
+          .teacher-subject {{teacher.subject}}
           
         
 

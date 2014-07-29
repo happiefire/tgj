@@ -1,5 +1,20 @@
-_border($width, $color=$border-color)
+_border($width=1px, $color=$border-color)
   border: $width solid $color
 
-_border-right($width, $color=$border-color)
-  border-right $width solid $color
+_border-right($width=1px, $color=$border-color)
+  border-right: $width solid $color
+
+_border-left($width=1px, $color=$border-color)
+  border-left: $width solid $color
+
+_border-top($width=1px, $color=$border-color)
+  border-top: $width solid $color
+
+_border-bottom($width=1px, $color=$border-color)
+  border-bottom: $width solid $color
+
+_border-radius($radius=$border-radius)
+  border-radius: $radius
+
+_box-shadow()
+  box-shadow: 0px 2px 0px $gray-lighter
