@@ -1,0 +1,55 @@
+extend templates/app
+
+block config
+  - var ngIsOn = true
+  - var ng = {app: "newClass"}
+
+block stage-toolbar
+  .stage-toolbar
+    
+block stage
+  .stage(ng-controller="")
+    form(role="form" style="width: 500px")
+      h1 创建新班级
+      .form-group
+        label(for="class-name")
+          |名称(必填)
+          input.form-control#class-name(type="text")
+      .form-group
+        label(for="class-teacher")
+          |老师(必填)
+          input.form-control#class-teacher(type="text")
+        button.btn.btn-default#class-teacher(type="button" data-container="body" data-toggle="popover" data-placement="right" title="请选择老师" data-content="teachers") 选择
+      .form-group
+        label(for="class-subject")
+          |科目
+          input.form-control#class-comment(type="text")
+      .form-group
+        label(for="class-comment")
+          |备注
+          input.form-control#class-comment(type="text")
+      .alert.alert-info
+        |请将下面的邀请码告知您的学生，学生可以通过它加入该班级
+      .form-group
+        label.control-label 班级邀请码
+          pre.form-control-static {{ newClass.invitationId }}
+      .form-group
+        label 邀请码有效期
+          .form-inline
+            input.form-control(type="number" style="width: 80px; display: inline-block;")
+            select.form-control
+              option(value="day") 天
+              option(selected="true" value="week") 周
+              option(value="month") 月
+
+      .form-group
+          .checkbox
+            label
+              input(type="checkbox") 
+              |学生通过邀请码加入需要验证？
+      button.btn.btn-default(type="submit") 确定创建
+          
+        
+
+block bodyScripts
+  script(type="text/javascript", src="js/classes-new.js")
