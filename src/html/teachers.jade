@@ -1,0 +1,33 @@
+extend templates/app
+
+block config
+  - var ngIsOn = true
+  - var ng = {app: "teachers"}
+
+block stage-toolbar
+  .stage-toolbar
+    .form-inline.text-center
+      .form-group
+        .input-group
+          div.input-group-addon 
+            i.glyphicon.glyphicon-search
+          input.form-control(type="text" placeholder="搜索" style='width: 300px;')
+      .form-group.pull-right
+        a.btn.btn-primary 添加教师
+  
+
+block stage
+  .stage(ng-controller="TeachersController as teachers")
+    .stage-container
+      .teacher-group(ng-repeat="group in teachers.groupsList")
+        h2 {{group.groupName}}
+        .each-teacher(ng-repeat="teacher in group.members")
+          i.teacher-ui-handle :
+          i.teacher-name {{teacher.name}}
+          i.teacher-class {{teacher.classNum}}个班级
+          i.teacher-subject {{teacher.subject}}
+          
+        
+
+block bodyScripts
+  script(src="js/teachers.js")

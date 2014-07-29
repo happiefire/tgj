@@ -1,7 +1,7 @@
 extend base
   
 block body
-  .app-wrap
+  .app-wrap(ng-app=(ngIsOn? ng.app:'') )
     
     .navpane-wrap
       .navpane
@@ -26,9 +26,8 @@ block body
 
 
     .main-wrap
-      .stage-toolbar
-        block stage-toolbar
-      .stage
-        block stage
+      block stage-toolbar
+      block stage
         
-
+block bodyScripts
+  script(type="text/javascript" src="/js/teacher.js")
