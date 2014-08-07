@@ -46,8 +46,8 @@ html
         .stage
           div( ng-controller = "ItemController as itemInfo")
             div
-              div( id="all" ) 全部
-              div( id="craft" ) 草稿
+              div#all 全部
+              div#craft 草稿
             div( ng-repeat = "item in itemInfo.items" )
                 div( ng-class = "{ done : itemInfo.noneCraft(item) }" )
                   span {{item.name}}

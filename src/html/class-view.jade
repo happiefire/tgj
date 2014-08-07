@@ -1,0 +1,98 @@
+doctype html
+
+html
+  head
+    title 题管家
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible",content="IE=edge")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui")
+    link(rel="stylesheet", type="text/css", href="css/vendor/bootstrap.min.css")
+    link(rel="stylesheet", type="text/css", href="css/main.css")
+
+
+  body
+    script(type="text/javascript", src="js/vendor/jquery.min.js")
+    script(type="text/javascript", src="js/vendor/bootstrap.min.js")
+    script(type="text/javascript", src="js/vendor/angular.min.js")
+    script(type="text/javascript" src="js/vendor/highcharts.js")
+    script(type="text/javascript" src="js/vendor/highcharts-more.js")
+    script(type="text/javascript", src="js/class-view.js")
+    
+    .app-wrap(ng-app="class-view")
+      
+      .navpane-wrap
+        .navpane
+          nav.navpane-nav
+            ul
+              li
+                a(style="height: 49px;") 返回
+            .nav-divider(style="margin-top: 0;")
+            ul
+              li
+                a 教师管理
+              li
+                a 班级与学员管理
+              li
+                a 统计项目
+              li
+                a 设置
+          .brand
+            hr
+            .logo
+              |题管家
+
+      .main-wrap
+      
+        .stage-toolbar
+          
+        .stage
+          div#all-view 全部报告
+          div#recent-view 近期学情
+          div#list 班级名单
+          //- 下面是学情报告
+          div.view
+            //- 下面是总体的指标
+            div#overall
+              div.correct
+                div 平均正确率
+                div 60%
+              div.variance
+                div 总体方差
+                div 0.12
+              div.level
+                div 近期表现
+                div A
+            //- 正确率图
+            div#error
+            //- 雷达图
+            div#radar
+            //- 掌握程度趋势图
+            div#track
+            //- 下面是各个板块的玩意儿
+            div#catalog( ng-controller = "CatalogController as catalog")
+              div( ng-repeat = "unit in catalog.data" )
+                div.cname {{unit.name}}
+                div.cerror {{unit.error}}
+                div.clevel {{unit.level}}
+                div 查看题目
+          //-下面是班级名单
+          div.list( ng-controller = "NamelistController as list")
+            div 修改班级名单
+            //- 这个跟kelexx里那个差不多，我就不做了，你来
+            div( ng-repeat = "student in list.data")
+              table
+                tr
+                  th 排名
+                  th 姓名
+                  th 错误题号
+                  th 表现评级
+                tr( ng-repeat = "student in list.data")
+                  td {{student.rank}}
+                  td
+                    a {{student.name}}
+                  td {{student.crate}}
+                  td {{student.level}}
+                
+
+
+
