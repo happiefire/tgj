@@ -76,14 +76,12 @@
 var errorData = {
   x:['3月5日','3月12日','3月19日','3月26日','4月2日','4月9日','4月16日','4月23日'],
   class:[60,65,70,50,65,80,65,70],
-  student:[50,60,55,55,60,55,60,70]
 };
 
 //雷达图
 var radarData = {
   x:['函数', '三角函数', '数列', '集合', '立体几何','圆锥曲线'],
   class:[40, 70, 51, 48, 63,84],
-  student:[50,60, 44, 36, 75, 71]
 };
 
 //掌握程度趋势
@@ -134,9 +132,6 @@ function gen_error_chart(datum){
     series: [{
         name: '全班',
         data: datum.class
-    }, {
-        name: '自己',
-        data: datum.student
     }]
   };
   var chart = new Highcharts.Chart(errorOptions);
@@ -184,10 +179,6 @@ function gen_radar_chart(datum) {
     },
     
     series: [{
-        name: '自己',
-        data: datum.student,
-        pointPlacement: 'on'
-    }, {
         name: '全班',
         data: datum.class,
         pointPlacement: 'on'
