@@ -1,5 +1,5 @@
 (function(){
-  var app = angular.module('item', []);  
+  var app = angular.module('exercise', []);  
   var data = [
     {
       uid:'asdf001',
@@ -24,8 +24,8 @@
     }
   ];
 
-  app.controller('ItemController', function(){
-    this.items = data;
+  app.controller('ExerciseController', function(){
+    this.data = data;
     this.noneCraft = function(para){
       if(para.status === '草稿'){ return false }
       else { return true }

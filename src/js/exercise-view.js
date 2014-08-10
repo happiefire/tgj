@@ -1,5 +1,5 @@
 (function(){
-  var app = angular.module('item-view-tea', []);  
+  var app = angular.module('exercise-view', []);  
 
   var namelist = [
     {
