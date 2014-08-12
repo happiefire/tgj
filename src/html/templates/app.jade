@@ -5,30 +5,26 @@ block body
     
     .navpane-wrap
       .navpane
+        .brand
+          |题管家
         nav.navpane-nav
-          ul
-            li
-              a(style="height: 50px;") 返回
-          hr.simple.dark
           ul
             li
               a(href="teachers.html") 教师管理
             li
-              a(href="classes.html") 班级与学员管理
+              a(href="classes.html") 班级与学员
             li
-              a(href="exercises.html") 统计项目
+              a(href="exercises.html") 练习管理
+        nav.navpane-nav.navpane-nav-bottom
+          ul
             li
-              a(href="library.html") 题库
-            li
-              a(href="settings.html") 设置
-        .brand
-          hr.simple.dark
-          .logo
-            |题管家
+              a 
+                i.avatar-md
+                |个人中心
 
 
     .main-wrap
-      block stage-toolbar
+      block toolbar
       block stage
         
 block bodyScripts

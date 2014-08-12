@@ -39,12 +39,12 @@ gulp.task('serve', function(){
       host: '0.0.0.0',
       fallback: 'index.html',
       livereload: true,
-      directoryListing: false
+      directoryListing: true
     }));
 
   gulp.watch(['src/html/**/*.jade'], ['jade']);
   gulp.watch(['src/css/**/*.styl'], ['stylus']);
-  gulp.watch(['src/**/*'], ['copy']);
+  // gulp.watch(['src/**/*'], ['copy']);
   // gulp.watch(['src/js/**/*.coffee'], ['coffee']);
 });
 

@@ -1,21 +1,35 @@
-.stage-container
-  // max-width: 600px
+.teacher-group-title
+  font-size: 1.5em
+  line-height: 50px
+  _border-bottom()
 
 .each-teacher
-  @extend .card-style
-  display: inline-block
-  height: 200px
-  width: 250px
-  margin-bottom: 10px
-  &+&
-    margin-left: 20px  
-  & > div, h1, h2, h3
-    padding: 0 $padding-hrz
-
+  height: 60px
+  line-height: 60px
+  _border-bottom(1px, $gray-lighter)
   .teacher-name
-    // font-size: 18px
+    font-size: 1.25em
+    width: 40%
   .teacher-class
-    // width: 10%
+    width: 20%
   .teacher-subject
-    // text-align: right
-    // width: 10%
+    width: 20%
+  .teacher-view-btn
+    width: 20%
+    text-align: right
+
+.new-teachers-table
+  // border: none;
+  tbody
+    _border()
+  td
+    border-left: none;
+    input
+      border: none;
+
+.teacher-invitation-email
+  width: 100%
+  height: 200px
+  border-radius: $border-radius
+  _border()
+  padding: 10px

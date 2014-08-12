@@ -1,38 +1,97 @@
+html, body, .app-wrap
+  width: 100%
+  height: 100%
+
 .navpane-wrap
   width: $navpane-width
   height: 100%
-  position: absolute
+  position: fixed
+  left: 0
+  top: 0
 
 .main-wrap
   height: 100%
   margin-left: $navpane-width
-
-.stage
+  padding-top: $toolbar-height
   background-color: $gray-lightest
-  min-height: 900px
+  border-radius: 10px
+
+.toolbar-wrap
+  position: fixed
+  left: $navpane-width
+  right: 0
+  top: 0
+  _box-shadow($toolbar-shadow)
+  background-color: #fff
+  height: $toolbar-height
+  padding: 0 20px;
+  .toolbar-container
+    line-height: $toolbar-height
+    position: relative
+
+.toolbar-component
+  display: inline-block
+  vertical-align: middle
+  line-height: 1
+  .page-title
+    font-size: 1.7em
+
+.toolbar-pos-right,
+.toolbar-pos-left,
+.toolbar-pos-center
+  display: block
+  vertical-align: middle
+  line-height: $toolbar-height
+  position: absolute
+  // _border-test()
+
+.toolbar-pos-left
+  text-align: left
+  left: 0
+
+.toolbar-pos-center
+  text-align: center
+  display: block
+  width: 100%
+
+.toolbar-pos-right
+  text-align: right
+  right: 0
+
+.stage-wrap
   padding: 20px
   padding-top: 10px
 
-.stage-toolbar
-  _border-bottom()
-  margin-bottom: 0
-  height: 50px
-  .btn-bar
-    display: inline-block
-    height: 49px
-    line-height: 49px
-    cursor: pointer;
-    padding: 0 $btn-padding-hrz;
-    &:hover
-      background-color: $gray-lighter
+.stage-container
+  max-width: 800px
+  margin: auto
+  // _border-test()
+.stage-container-left
+  padding-top: 20px
+  max-width: 500px
 
-.dev-notes
-  position: fixed
-  top: 100px
-  right: 50px
-  width: 500px
-  min-height: 50px
-  padding: 20px
-  padding-top: 0
-  background-color: rgba(255,255,255,0.7)
-  _border()
+.stage-pane
+  @extend .pane-style
+  padding: $stage-pane-padding-vrt $stage-pane-padding-hrz
+
+.each-item.list-view
+  @extend .clearfix
+  width: 100%
+  &:last-child
+    border-bottom: none;
+  .each-item-component
+    float: left
+
+section
+  margin-bottom: 2.5em
+
+// .dev-notes
+//   position: fixed
+//   top: 100px
+//   right: 50px
+//   width: 500px
+//   min-height: 50px
+//   padding: 20px
+//   padding-top: 0
+//   background-color: rgba(255,255,255,0.7)
+//   _border()

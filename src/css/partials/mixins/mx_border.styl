@@ -16,5 +16,8 @@ _border-bottom($width=1px, $color=$border-color)
 _border-radius($radius=$border-radius)
   border-radius: $radius
 
-_box-shadow()
-  box-shadow: 0px 2px 0px $gray-lighter
+_box-shadow($shadow-color = $gray-lighter)
+  box-shadow: 0px 2px 1px $shadow-color
+
+_border-test($color = red)
+  border: 1px solid $color

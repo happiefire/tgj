@@ -4,28 +4,40 @@ block config
   - var ngIsOn = true
   - var ng = {app: "teachers"}
 
-block stage-toolbar
-  .stage-toolbar
-    .form-inline.text-center
-      .form-group
-        .input-group
-          div.input-group-addon 
-            i.glyphicon.glyphicon-search
-          input.form-control(type="text" placeholder="搜索" style='width: 300px;')
-      .form-group.pull-right
-        a.btn-bar(href="teachers-new.html") 添加教师
-  
+block toolbar
+  .toolbar-wrap
+    .toolbar-container
+    
+      //- .toolbar-pos-center
+      //-   .toolbar-component
+      //-     .form-inline        
+      //-       .form-group
+      //-         .input-group
+      //-           div.input-group-addon 
+      //-             i.glyphicon.glyphicon-search
+      //-           input.form-control(type="text" placeholder="搜索" style='width: 300px;')
 
+      .toolbar-pos-left
+        .toolbar-component
+          .page-title 教师管理
+
+      .toolbar-pos-right
+        .toolbar-component
+          a.btn(href="teacher-invite.html") 邀请教师
+      
 block stage
-  .stage(ng-controller="TeachersController as teachers")
+  .stage-wrap(ng-controller="TeachersController as teachers")
     .stage-container
-      .teacher-group(ng-repeat="group in teachers.groupsList")
-        h2 {{group.groupName}}
-        .each-teacher(ng-repeat="teacher in group.members")
-          h3.teacher-name {{teacher.name}}
-          .teacher-class {{teacher.classNum}}个班级
-          .teacher-subject {{teacher.subject}}
-          
+      .stage-pane
+        .teacher-group(ng-repeat="group in teachers.groupsList")
+          .teacher-group-title {{group.groupName}}
+          .each-teacher.each-item.list-view(ng-repeat="teacher in group.members")
+            .each-item-component.teacher-name {{teacher.name}}
+            .each-item-component.teacher-class {{teacher.classNum}}个班级
+            .each-item-component.teacher-subject {{teacher.subject}}
+            .each-item-component.teacher-view-btn
+              .btn 查看教师详情
+            
         
 
 block bodyScripts

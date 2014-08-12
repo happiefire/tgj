@@ -4,25 +4,30 @@ block config
   - var ngIsOn = true
   - var ng = {app: "classes"}
 
-block stage-toolbar
-  .stage-toolbar
-    .form-inline.text-center
-      .form-group
-        .input-group
-          div.input-group-addon 
-            i.glyphicon.glyphicon-search
-          input.form-control(type="text" placeholder="搜索" style='width: 300px;')
-      .form-group.pull-right
-        a.btn-bar(href="teachers-new.html") 添加班级
-  
+block toolbar
+  .toolbar-wrap
+    .toolbar-container
+      .toolbar-pos-left
+        .toolbar-component
+          .page-title 班级与学员管理
 
+      .toolbar-pos-right
+        .toolbar-component
+          a.btn(href="classes-new.html") 创建新班级
+  
 block stage
-  .stage
-    div( ng-controller = "ClassController as classInfo")
-      div( ng-repeat = "class in classInfo.data")
-        span {{class.name}}
-        span {{class.size + '人'}}
-        span {{class.teacher}}
+  .stage-wrap(ng-controller = "ClassController as classInfo")
+    .stage-container
+      .stage-pane
+        .class-group
+          .class-group-title {{group.groupName}}
+          .each-class.each-item.list-view(ng-repeat = "class in classInfo.data")
+            .each-item-component.class-name {{class.name}}
+            .each-item-component.class-students-number {{class.size + '人'}}
+            .each-item-component.class-teacher {{class.teacher}}
+            .each-item-component.class-view-btn
+              .btn 查看班级
+
           
 
 block bodyScripts

@@ -4,49 +4,63 @@ block config
   - var ngIsOn = true
   - var ng = {app: "teachersNew"}
 
-block stage-toolbar
-  .stage-toolbar
+block toolbar
+  .toolbar-wrap
+    .toolbar-container
+      .toolbar-pos-left
+        .toolbar-component
+          .page-title 添加教师
+
     
 block stage
-  .stage
-    form(role="form")
-      h1 添加教师
-      |填写下表以添加教师或
-      button.btn.btn-default(data-toggle="modal" data-target="#myModal") 上传Excel名单
-      .modal.fade#myModal(tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true")
-        .modal-dialog
-          .modal-content
-            .modal-header
-              button.close(type="button" data-dismiss="modal")
-                span(aria-hidden="true") &times
-                span.sr-only
-                  |Close
-              h4.modal-title#myModalLabel 上传Excel名单
-            .modal-body
-              label.file-input-wrap
-                input#file-input-field(type="file" name="date")
-              p
-                |目前只接受Excel格式的名单表格(.xls)。
-                br
-                |请确保表格格式如下图所示，第一列为教师姓名，第二列为联系方式，第三列为备注。
-              img.img-thumbnail(src="img/example-excel.png" alt="示例名单" width="300px")
-      table#name-list
-        thead
-          tr
-            th.teacher-name(scope="col") 姓名
-            th.teacher-email(scope="col") 邮箱
-            th.teacher-tel(scope="col") 手机
-            th.teacher-comment(scope="col") 备注
-        tbody
-          tr#name-list-row-0
-            td.teacher-name
-              input(type="text" required)
-            td.teacher-email
-              input(type="email" required)
-            td.teacher-tel
-              input(type="text")
-            td.teacher-comment
-              input(type="text")
-      a.append-rows.btn 新增1行空表格
-      br
-      button.btn.btn-default(type="submit") 确定添加
+  .stage-wrap
+    .stage-container-left
+      form(role="form")
+        |填写下表以添加教师或
+        button.btn.btn-default(data-toggle="modal" data-target="#myModal") 上传Excel名单
+        .modal.fade#myModal(tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true")
+          .modal-dialog
+            .modal-content
+              .modal-header
+                button.close(type="button" data-dismiss="modal")
+                  span(aria-hidden="true") &times
+                  span.sr-only
+                    |Close
+                h4.modal-title#myModalLabel 上传Excel名单
+              .modal-body
+                label.file-input-wrap
+                  input#file-input-field(type="file" name="date")
+                p
+                  |目前只接受Excel格式的名单表格(.xls)。
+                  br
+                  |请确保表格格式如下图所示，第一列为教师姓名，第二列为联系方式，第三列为备注。
+                img.img-thumbnail(src="img/example-excel.png" alt="示例名单" width="300px")
+        table#name-list.new-teachers-table
+          thead
+            tr
+              th.teacher-name 姓名
+              th.teacher-email 邮箱
+              th.teacher-tel 手机
+              th.teacher-comment 备注
+          tbody
+            tr#name-list-row-0
+              td.teacher-name
+                input(type="text" required)
+              td.teacher-email
+                input(type="email" required)
+              td.teacher-tel
+                input(type="text")
+              td.teacher-comment
+                input(type="text")
+            tr#name-list-row-1
+              td.teacher-name
+                input(type="text" required)
+              td.teacher-email
+                input(type="email" required)
+              td.teacher-tel
+                input(type="text")
+              td.teacher-comment
+                input(type="text")
+        a.append-rows.btn 新增1行空表格
+        br
+        button.btn.btn-default(type="submit") 确定添加

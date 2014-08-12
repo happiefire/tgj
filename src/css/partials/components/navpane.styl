@@ -1,11 +1,11 @@
-$navpane-bg = $gray-darker
 .navpane
   width: 100%
   height: 100%
   background-color: $navpane-bg
   font-size: 16px
   color: $gray
-  .navpane-nav
+  position: relative
+  nav.navpane-nav
     ul
       li
         display: block
@@ -23,11 +23,17 @@ $navpane-bg = $gray-darker
           &.active, &:active
             color: $gray-lighter
             background-color: $gray-darkest
-
+  nav.navpane-nav-bottom
+    position: absolute
+    bottom: 0
+    width: 100%
 
 .brand
-  position: absolute
-  bottom: 0
+  height: $toolbar-height
   width: 100%
-  .logo
-    padding: 15px
+  background-color: $theme-blue
+  color: #fff
+  line-height: $toolbar-height
+  text-align: center
+  font-size: 28px
+  font-weight: bold

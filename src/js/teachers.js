@@ -2,7 +2,7 @@
   var app = angular.module('teachers', []);  
   var data = [
     {
-      groupName: '理科教研组',
+      groupName: '所有教师',
       members: [
         {
           uid: '392414124',
