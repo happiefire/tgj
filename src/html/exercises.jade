@@ -1,0 +1,38 @@
+extend templates/app
+
+block config
+  - var ngIsOn = true
+  - var ng = {app: "exercise"}
+
+block toolbar
+  .toolbar-wrap
+    .toolbar-container
+    
+      .toolbar-pos-left
+        .toolbar-component
+          .page-title 练习管理
+
+      .toolbar-pos-right
+        .toolbar-component
+          a.btn(href="exercise-new-1.html") 创建新练习
+      
+block stage
+  .stage-wrap(ng-controller="ExerciseController as exercises")
+    .stage-container
+      .stage-pane
+        .exercise-group
+          .exercise-group-title 所有练习
+          .each-exercise.each-item.list-view(ng-repeat="exercise in exercises.data")
+            .each-item-component.exercise-main 
+              .exercise-name {{exercise.name}}
+              .exercise-date {{exercise.date}}
+            .each-item-component.exercise-status(ng-class) {{exercise.status}}
+            .each-item-component.exercise-class {{exercise.class}}
+            .each-item-component
+            .each-item-component.exercise-view-btn
+              .btn 查看详情
+            
+        
+
+block bodyScripts
+  script(src="js/exercise.js")
