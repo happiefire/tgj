@@ -29,61 +29,61 @@ html, body, .app-wrap
     line-height: $toolbar-height
     position: relative
 
-.toolbar-component
-  display: inline-block
-  vertical-align: middle
-  line-height: 1
-  .page-title
-    font-size: 1.7em
+  .toolbar-component
+    display: inline-block
+    vertical-align: middle
+    line-height: 1
+    .page-title
+      font-size: 1.7em
 
-.toolbar-pos-right,
-.toolbar-pos-left,
-.toolbar-pos-center
-  display: block
-  vertical-align: middle
-  line-height: $toolbar-height
-  position: absolute
-  // _border-test()
+  .toolbar-pos-right,
+  .toolbar-pos-left,
+  .toolbar-pos-center
+    display: block
+    vertical-align: middle
+    line-height: $toolbar-height
+    position: absolute
+    // _border-test()
 
-.toolbar-pos-left
-  text-align: left
-  left: 0
+  .toolbar-pos-left
+    text-align: left
+    left: 0
 
-.toolbar-pos-center
-  text-align: center
-  display: block
-  width: 100%
+  .toolbar-pos-center
+    text-align: center
+    display: block
+    width: 100%
 
-.toolbar-pos-right
-  text-align: right
-  right: 0
+  .toolbar-pos-right
+    text-align: right
+    right: 0
 
 .stage-wrap
   padding: 20px
   padding-top: 10px
 
-.stage-container
-  max-width: 800px
-  margin: auto
-  // _border-test()
-.stage-container-left
-  padding-top: 20px
-  max-width: 500px
+  .stage-container
+    max-width: 800px
+    margin: auto
+    // _border-test()
+  .stage-container-left
+    padding-top: 20px
+    max-width: 500px
 
-.stage-pane
-  @extend .pane-style
-  padding: $stage-pane-padding-vrt $stage-pane-padding-hrz
+  .stage-pane
+    @extend .pane-style
+    padding: $stage-pane-padding-vrt $stage-pane-padding-hrz
 
-.each-item.list-view
-  @extend .clearfix
-  width: 100%
-  &:last-child
-    border-bottom: none;
-  .each-item-row
+  .each-item.list-view
     @extend .clearfix
-    width 100%
-  .each-item-component
-    float: left
+    width: 100%
+    &:last-child
+      border-bottom: none;
+    .each-item-row
+      @extend .clearfix
+      width 100%
+    .each-item-component
+      float: left
 
 section
   margin-bottom: 2.5em

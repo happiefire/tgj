@@ -1,0 +1,42 @@
+extend templates/base
+
+block config
+  - var ngIsOn = true
+  - var ng = {app: "exercise-new"}
+
+block headStyles
+  link(rel="stylesheet", type="text/css", href="css/exercise-new.css")
+
+block body
+  .app-wrap( ng-app=(ngIsOn? ng.app:'') )
+    .nex-main-wrap
+      .toolbar-wrap
+        .toolbar-container
+          .toolbar-pos-left
+            .toolbar-component
+              .page-title 练习编辑器
+          .toolbar-pos-right
+            .toolbar-component
+              |保存为草稿并退出
+      .nex-stage-wrap
+        .nex-stage-container
+          .content-pane.left-pane
+            h1 hello
+            h1 hello
+            h1 hello
+            h1 hello
+            h1 hello
+            h1 hello
+            h1 hello
+            h1 hello
+            h1 hello
+            h1 hello
+            h1 hello
+            h1 hello
+            h1 hello
+            h1 hello
+            h1 hello
+            h1 hello
+          .editor-pane.right-pane
+            h1 world
+          
