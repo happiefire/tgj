@@ -89,44 +89,47 @@ function gen_error_chart(datum){
       renderTo: 'error'
     },
     title: {
-            text: '正确率趋势图',
-            x: -20 //center
+      text: '正确率趋势图',
+      x: -20 //center
     },
     xAxis: {
       title:{
         // text:'时间'
       },
-        categories: datum.x
+      categories: datum.x
     },
     yAxis: {
-        title: {
-            text: '正确率'
-        },
-        min:0,
-        max:100,
-        plotLines: [{
-            value: 0,
-            width: 1,
-            color: '#808080'
-        }]
+      title: {
+        text: '正确率'
+      },
+      min:0,
+      max:100,
+      plotLines: [{
+        value: 0,
+        width: 1,
+        color: '#808080'
+      }]
     },
     tooltip: {
     shared: true,
       pointFormat: '<span style="color:{series.color}">{series.name}: <b>{point.y:,.0f}%</b><br/>'
     },
     legend: {
-        layout: 'vertical',
-        align: 'right',
-        verticalAlign: 'middle',
-        borderWidth: 0
+      layout: 'vertical',
+      align: 'right',
+      verticalAlign: 'middle',
+      borderWidth: 0
     },
     series: [{
-        name: '全班',
-        data: datum.class
+      name: '全班',
+      data: datum.class
     }, {
-        name: '自己',
-        data: datum.student
-    }]
+      name: '自己',
+      data: datum.student
+    }],
+    credits:{
+      enabled:false
+    },
   };
   var chart = new Highcharts.Chart(errorOptions);
 };
@@ -134,14 +137,14 @@ function gen_error_chart(datum){
 function gen_radar_chart(datum) {
   var radarOptions = {
     chart: {
-          polar: true,
-          type: 'line',
-          renderTo:'radar'
+      polar: true,
+      type: 'line',
+      renderTo:'radar'
     },
     
     title: {
-        text: '知识点掌握程度',
-        x: -40
+      text: '知识点掌握程度',
+      x: -40
     },
     
     pane: {
@@ -149,38 +152,44 @@ function gen_radar_chart(datum) {
     },
     
     xAxis: {
-        categories: datum.x,
-        tickmarkPlacement: 'on',
-        lineWidth: 0
+      categories: datum.x,
+      tickmarkPlacement: 'on',
+      lineWidth: 0
     },
         
     yAxis: {
-        gridLineInterpolation: 'polygon',
-        lineWidth: 0,
-        min: 0
+      gridLineInterpolation: 'polygon',
+      lineWidth: 0,
+      min: 0
     },
     
     tooltip: {
       shared: true,
-        pointFormat: '<span style="color:{series.color}">{series.name}: <b>{point.y:,.0f}%</b><br/>'
+      pointFormat: '<span style="color:{series.color}">{series.name}: <b>{point.y:,.0f}%</b><br/>'
     },
     
     legend: {
-        align: 'right',
-        verticalAlign: 'top',
-        y: 70,
-        layout: 'vertical'
+      align: 'right',
+      verticalAlign: 'top',
+      y: 70,
+      layout: 'vertical'
     },
     
-    series: [{
+    series: [
+      {
         name: '自己',
         data: datum.student,
         pointPlacement: 'on'
-    }, {
+      }, 
+      {
         name: '全班',
         data: datum.class,
         pointPlacement: 'on'
-    }]
+      }
+    ],
+    credits:{
+      enabled:false
+    },
   };
   
   var chart = new Highcharts.Chart(radarOptions);
@@ -193,31 +202,29 @@ function gen_track_chart(datum){
       renderTo: 'track'
     },
     title: {
-        text: '掌握程度趋势图',
-        x: -20 //center
+      text: '掌握程度趋势图',
+      x: -20 //center
     },
     xAxis: {
       title:{
         // text:'时间'
       },
-        categories: datum.x
+      categories: datum.x
     },
     yAxis: {
-        title: {
-            text: '掌握程度'
-        },
-        min:0,
-        max:100,
-        plotLines: [{
-            value: 0,
-            width: 1,
-            color: '#808080'
-        }]
+      title: {
+        text: '掌握程度'
+      },
+      min:0,
+      max:100,
+      plotLines: [{
+        value: 0,
+        width: 1,
+        color: '#808080'
+      }]
     },
     tooltip: {
-        formatter: function() {
-        return this.x + ': '+ this.y +'%</b>';
-      }
+      pointFormat: '<span style="color:{series.color}">{series.name}: <b>{point.y:,.0f}%</b><br/>'
     },
     plotOptions:{
       area:{
@@ -229,9 +236,15 @@ function gen_track_chart(datum){
       }
     },
     series: [{
-        name: '自己',
-        data: datum.y
-    }]
+      name: '自己',
+      data: datum.y
+    }],
+    credits:{
+      enabled:false
+    },
+    legend:{
+      enabled:false
+    }
   };
   var chart = new Highcharts.Chart(trackOptions);
 };

@@ -81,7 +81,10 @@ function gen_pb_chart(datum){
     },
     series: [{
       data: datum.y,
-    }]
+    }],
+    credits:{
+      enabled:false
+    },
   };
   var chart = new Highcharts.Chart(pbOptions);
 };
