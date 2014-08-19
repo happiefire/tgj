@@ -243,14 +243,14 @@ $(function(){
   gen_error_chart(errorData);
   gen_radar_chart(radarData);
   gen_track_chart(trackData);
-  $(".list").css("display","none");
+  $("#name-list").css("display","none");
   $("#list").on("click",function(){
-    $(".view").css("display","none");
-    $(".list").css("display","block");
+    $("#report-body").css("display","none");
+    $("#name-list").css("display","block");
   });
 
   $("#recent-view,#all-view").on("click",function(){
-    $(".list").css("display","none");
-    $(".view").css("display","block");
+    $("#name-list").css("display","none");
+    $("#report-body").css("display","block");
   });
 });
