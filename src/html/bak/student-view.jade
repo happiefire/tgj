@@ -1,0 +1,86 @@
+doctype html
+
+html
+  head
+    title 题管家
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible",content="IE=edge")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui")
+    link(rel="stylesheet", type="text/css", href="css/vendor/bootstrap.min.css")
+    link(rel="stylesheet", type="text/css", href="css/main.css")
+
+
+  body
+    script(type="text/javascript", src="js/vendor/jquery.min.js")
+    script(type="text/javascript", src="js/vendor/bootstrap.min.js")
+    script(type="text/javascript", src="js/vendor/angular.min.js")
+    script(type="text/javascript" src="js/vendor/highcharts.js")
+    script(type="text/javascript" src="js/vendor/highcharts-more.js")
+    script(type="text/javascript", src="js/student-view.js")
+    
+    .app-wrap(ng-app="stu-view")
+      
+      .navpane-wrap
+        .navpane
+          nav.navpane-nav
+            ul
+              li
+                a(style="height: 49px;") 返回
+            .nav-divider(style="margin-top: 0;")
+            ul
+              li
+                a 教师管理
+              li
+                a 班级与学员管理
+              li
+                a 统计项目
+              li
+                a 设置
+          .brand
+            hr
+            .logo
+              |题管家
+
+      .main-wrap
+      
+        .stage-toolbar
+          
+        .stage
+          //- 下面是总体的指标
+          div#overall
+            div.correct
+              div 平均正确率
+              div 60%
+            div.rank
+              div 班级排名
+              div 6
+            div.level
+              div 近期表现
+              div A
+          //- 正确率图
+          div#error
+          //- 雷达图
+          div#radar
+          //- 掌握程度趋势图
+          div#track
+          //- 老师的评语
+          div#comment( ng-controller = "CommentsController as comments")
+            div(ng-repeat = "comment in comments.data")
+              div.time  {{comment.time}}
+              div.content {{comment.content}}
+            input#comment-content( type = "text" ng-show = "comments.editOn" )
+            div.add-comment( ng-hide = "comments.editOn" ng-click = "comments.toggleEdit()") 添加评语
+            div.submit-comment( ng-show = "comments.editOn" ng-click = "comments.submit()") 提交
+          //- 下面是各个板块的玩意儿
+          div#catalog( ng-controller = "CatalogController as catalog")
+            div( ng-repeat = "unit in catalog.data" )
+              div.cname {{unit.name}}
+              div.cerror {{unit.error}}
+              div.clevel {{unit.level}}
+              div 查看错题
+
+
+
+
+
+

@@ -1,0 +1,63 @@
+doctype html
+
+html
+  head
+    title 题管家
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible",content="IE=edge")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui")
+    link(rel="stylesheet", type="text/css", href="css/vendor/bootstrap.min.css")
+    link(rel="stylesheet", type="text/css", href="css/main.css")
+
+
+  body
+    script(type="text/javascript", src="js/vendor/jquery.min.js")
+    script(type="text/javascript", src="js/vendor/bootstrap.min.js")
+    script(type="text/javascript", src="js/vendor/angular.min.js")
+    script(type="text/javascript", src="js/exercise.js")
+    
+    .app-wrap(ng-app="exercise")
+      
+      .navpane-wrap
+        .navpane
+          nav.navpane-nav
+            ul
+              li
+                a(style="height: 49px;") 返回
+            .nav-divider(style="margin-top: 0;")
+            ul
+              li
+                a 教师管理
+              li
+                a 班级与学员管理
+              li
+                a 统计项目
+              li
+                a 设置
+          .brand
+            hr
+            .logo
+              |题管家
+
+      .main-wrap
+      
+        .stage-toolbar
+          
+        .stage
+          div( ng-controller = "ExerciseController as itemInfo")
+            div
+              div#all 全部
+              div#craft 草稿
+            div( ng-repeat = "item in itemInfo.data" )
+                div( ng-class = "{ done : itemInfo.noneCraft(item) }" )
+                  span {{item.name}}
+                  span {{item.date}}
+                  span {{item.class}}
+                  span {{item.status}}
+                  div( ng-show = "!itemInfo.noneCraft(item)" ) 查看情况
+                  div( ng-show = "itemInfo.noneCraft(item)" ) 继续编辑
+
+
+
+
+

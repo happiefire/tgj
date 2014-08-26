@@ -1,0 +1,42 @@
+extend templates/base
+
+block config
+  - var ngIsOn = true
+  - var ng = {app: "exercise-new"}
+
+block headStyles
+  link(rel="stylesheet", type="text/css", href="css/exercise-new.css")
+
+block body
+  .app-wrap( ng-app="exercise-new-2" )
+    .main-wrap
+      .toolbar-wrap
+        .toolbar-container
+          .toolbar-pos-left
+            .toolbar-component
+              .page-title 练习编辑器
+          .toolbar-pos-right
+            .toolbar-component
+              |保存为草稿并退出
+      .stage-wrap
+        .stage-container
+          .problems( ng-controller = "PbController as pbs")
+            .pb-wrap( ng-repeat = "pb in pbs.data" )
+              .pb-head
+                .number 第{{pb.no}}题
+                  span( ng-show = "pbs.isMultiChoice(pb)") 
+                    |(多选)
+                select.type( ng-mouseout = "pbs.changeType(pb)")
+                  option(value="选择题" ng-selected="pb.type === '选择题'") 选择题
+                  option(value="主观题" ng-selected="pb.type === '主观题'") 主观题
+              .pb-content
+                .main-content {{pb.text}}
+                hr
+                .choice-wrap
+                  .choice( ng-repeat = "choice in pb.choices")
+                    div( ng-click = "pbs.selectAnswer(choice,pb)" ng-class = "{correct:pbs.markCorrect(choice,pb)}")
+                      {{choice.number + choice.content}}
+            .btn 完成
+
+block bodyScripts
+  script(src="js/exercise-new-2.js")
