@@ -1,0 +1,22 @@
+$figure-grid-gutter = 15px
+
+.figure-row
+  @extend .clearfix
+  margin: 0 $figure-grid-gutter * -1
+  padding: 10px 0 50px 0
+
+
+  .figure-grid
+    float: left
+    width: 33.3333%
+    padding: 0 $figure-grid-gutter
+    border-right: 1px dotted $border-color
+    &:last-child
+      border: none
+
+    .figure-num
+      text-align: center
+      font-size: 3em
+
+.chart
+  margin-bottom: 50px

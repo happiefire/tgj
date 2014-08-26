@@ -3,15 +3,13 @@ button, .btn {
   font-weight: normal;
   text-align: center;
   cursor: pointer;
-  white-space: nowrap;
   margin-bottom: 0px;
-  -webkit-user-select: none;
-  -ms-user-select: none;
   user-select: none;
 
   border: 1px solid transparent;
   border-radius: $border-radius;
 
+  line-height: $line-height
   padding: $btn-padding-vrt $btn-padding-hrz;
   height: $font-size*$line-height + $btn-padding-vrt*2 + 2px;
 
@@ -60,4 +58,31 @@ button, .btn {
 //     }
 //   }
 // }
+
+.tab-toggle-group
+  @extend .clearfix
+  .tab-toggle
+    float: left
+    text-align: center;
+    cursor: pointer;
+    white-space: nowrap;
+    margin-bottom: 0px;
+    user-select: none;
+    line-height: 30px
+    padding: 0 15px
+    min-width: 120px
+    border: 1px solid $gray-dark
+    color: $gray-dark
+    border-right-width: 0px
+    &:first-child
+      border-top-left-radius: $border-radius
+      border-bottom-left-radius: $border-radius
+    &:last-child
+      border-top-right-radius: $border-radius
+      border-bottom-right-radius: $border-radius
+      border-right-width: 1px
+    &.active
+      color: #fff
+      background-color: $gray-dark
+
 

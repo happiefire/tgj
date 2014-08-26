@@ -1,15 +1,26 @@
 extend templates/base
 
+<<<<<<< HEAD
+//- block config
+//-   - var ngIsOn = true
+//-   - var ng = {app:"fuck"}
+=======
 block config
   - var ngIsOn = true
   - var ng = {app: "exercise-new"}
+>>>>>>> 56c22d67138f8598ef9d1a2fffe8ff2a829a3976
 
 block headStyles
   link(rel="stylesheet", type="text/css", href="css/exercise-new.css")
 
 block body
+<<<<<<< HEAD
   .app-wrap( ng-app="exercise-new-2" )
     .main-wrap
+=======
+  .app-wrap( ng-app=(ngIsOn? ng.app:'') )
+    .nex-main-wrap
+>>>>>>> 56c22d67138f8598ef9d1a2fffe8ff2a829a3976
       .toolbar-wrap
         .toolbar-container
           .toolbar-pos-left
@@ -18,6 +29,7 @@ block body
           .toolbar-pos-right
             .toolbar-component
               |保存为草稿并退出
+<<<<<<< HEAD
       .stage-wrap
         .stage-container
           .problems( ng-controller = "PbController as pbs")
@@ -40,3 +52,27 @@ block body
 
 block bodyScripts
   script(src="js/exercise-new-2.js")
+=======
+      .nex-stage-wrap
+        .nex-stage-container
+          .content-pane.left-pane
+            h1 hello
+            h1 hello
+            h1 hello
+            h1 hello
+            h1 hello
+            h1 hello
+            h1 hello
+            h1 hello
+            h1 hello
+            h1 hello
+            h1 hello
+            h1 hello
+            h1 hello
+            h1 hello
+            h1 hello
+            h1 hello
+          .editor-pane.right-pane
+            h1 world
+          
+>>>>>>> 56c22d67138f8598ef9d1a2fffe8ff2a829a3976
