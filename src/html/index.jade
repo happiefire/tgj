@@ -1,75 +1,92 @@
-extend templates/base
+doctype html
 
-block headLinks
-  link(rel="stylesheet", type="text/css", href="css/index.css")
+html
+  head
+    title 题管家
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible",content="IE=edge")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui")
+    link(rel="stylesheet", type="text/css", href="css/vendor/bootstrap.min.css")
+    link(rel="stylesheet", type="text/css", href="css/vendor/glyphicons.css")
+    link(rel="stylesheet", type="text/css", href="css/main.css")
+    link(rel="stylesheet", type="text/css", href="css/twbs-form-table.css")
+    link(rel="stylesheet", type="text/css", href="css/index.css")
 
-block body
-  header.navbar.navbar-static-top
-    .container
-      .navbar-header 
-        a.navbar-brand 题管家
+  body
+    header.navbar.navbar-static-top
+      .container
+        .navbar-header 
+          a.navbar-brand 题管家
 
-      nav.collapse.navbar-collapse
-        ul.nav.navbar-nav
-          li 
-            a one
-          li 
-            a two
-          li 
-            a three
+        nav.collapse.navbar-collapse
+          ul.nav.navbar-nav
+            li 
+              a one
+            li 
+              a two
+            li 
+              a three
 
-        ul.nav.navbar-nav.navbar-right
-          li
-            a four
-          li
-            a five
+          ul.nav.navbar-nav.navbar-right
+            li
+              a four
+            li
+              a five
 
-  section#landing
-    .container
-      h1 Welcome!
-      
+    section#landing
+      .container
+        h1 Welcome!
+        
 
-  section#signup
-    .container
-      .row
-        .col-md-4.col-md-offset-4.col-sm-6.col-sm-offset-3
-          .signup-wrap.card
-            ul.nav.nav-pills.nav-justified(role="tablist")
-              li.toggle-login(role="presentation" class="active")
-                a 登录
-              li.toggle-signup(role="presentation")
-                a 注册
-            .signup-form-wrap
-              form#login-form
-                .form-group
-                  input.form-control(type="email" placeholder="邮箱" required)
-                .form-group
-                  input.form-control(type="password" placeholder="密码" required)
-                button(type="submit" class="btn btn-info btn-block") 登录
-                .form-group
-                  .checkbox
-                    label
-                      input(type="checkbox") 
-                      |下次自动登录
-              form#signup-form(style='display:none;')
-                .form-group
-                  input.form-control(type="email" placeholder="邮箱" required)
-                .form-group
-                  input.form-control(type="password" placeholder="密码" required)
-                button(type="submit" class="btn btn-info btn-block") 注册
+    section#signup
+      .container
+        .row
+          .col-md-4.col-md-offset-4.col-sm-6.col-sm-offset-3
+            .signup-wrap.card
+              // 顶部切换tab
+              //- ul.nav.nav-pills.nav-justified(role="tablist")
+              //-   li.toggle-login(role="presentation" class="active")
+              //-     a 登录
+              //-   li.toggle-signup(role="presentation")
+              //-     a 注册
+              // form wra[]
+              .signup-form-wrap
+                // login form
+                form#login-form
+                  .form-group
+                    input#login-email.form-control(type="email" placeholder="邮箱" required)
+                  .form-group
+                    input#login-password.form-control(type="password" placeholder="密码" required)
+                  a#do-login-btn.btn.btn-info.btn-block 登录
+                  .form-group
+                    .checkbox
+                      label
+                        input(type="checkbox") 
+                        |下次自动登录
+                // signup form
+                //- form#signup-form(style='display:none;')
+                //-   .form-group
+                //-     input#signup-email.form-control(type="email" placeholder="邮箱" required)
+                //-   .form-group
+                //-     input#signup-password.form-control(type="password" placeholder="密码" required)
+                //-   .form-group
+                //-     input#signup-password-confirm.form-control(type="password" placeholder="再次确认密码" required)
+                //-   a#do-signup-btn.btn.btn-info.btn-block 登录
 
 
-block bodyScripts
-  script.
-    $('li.toggle-login').on('click', function(){
-      $('#login-form').show();
-      $('#signup-form').hide();
-      $(this).addClass('active');
-      $('li.toggle-signup').removeClass('active');
-    });
-    $('li.toggle-signup').on('click',function(){
-      $('#signup-form').show();
-      $('#login-form').hide();
-      $(this).addClass('active');
-      $('li.toggle-login').removeClass('active');
-    });
+    script(type="text/javascript" src="js/vendor/jquery.min.js")
+    script(type="text/javascript" src="js/vendor/bootstrap.min.js")
+    script(type="text/javascript" src='js/index.js')
+    // script.
+    //   $('li.toggle-login').on('click', function(){
+    //     $('#login-form').show();
+    //     $('#signup-form').hide();
+    //     $(this).addClass('active');
+    //     $('li.toggle-signup').removeClass('active');
+    //   });
+    //   $('li.toggle-signup').on('click',function(){
+    //     $('#signup-form').show();
+    //     $('#login-form').hide();
+    //     $(this).addClass('active');
+    //     $('li.toggle-login').removeClass('active');
+    //   });

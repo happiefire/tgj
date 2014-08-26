@@ -1,5 +1,5 @@
 (function(){
-  var app = angular.module('exercise', []);  
+  var app = angular.module('exercises', []);  
   var data = [
     {
       uid:'asdf001',
