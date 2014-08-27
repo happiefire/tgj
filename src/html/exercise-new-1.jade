@@ -8,23 +8,19 @@
         .toolbar-component
           |保存为草稿并退出
   .stage-wrap
-    .stage-container
+    .stage-container(ng-controller="ExerciseNewController")
     
       h3 基本信息
       form.exercise-new-form(role="form")
         .form-group
           label(for="exercise-new-name")
             |练习名称
-          input.form-control#exercise-new-name(type="text")
+          input.form-control#exercise-new-name(type="text" ng-model="exercise.name")
         .form-group
           div
             label 选择参与的班级
-          .checkbox
+          .checkbox(ng-repeat="class in classes")
             label
-              input(type="checkbox")
-              |甲班
-          .checkbox
-            label
-              input(type="checkbox")
-              |乙班
-        a(href="exercise-editor.html#/editor").btn 下一步
+              input(type="checkbox" ng-click='checkClass(class,$event.target)')
+              |{{class.name}}
+        a(href="exercise-editor.html#/editor").btn(ng-click="submit()") 下一步

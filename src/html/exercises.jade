@@ -16,12 +16,12 @@
         .exercise-group-title 所有练习
         .no-exercise-holder(ng-show="exerciseList.length===0")
           |您还没有创建任何练习，点击右上角创建。
-        .each-exercise.each-item.list-view(ng-repeat="exercise in exerciseList" ng-show="exerciseList.length===0")
+        .each-exercise.each-item.list-view(ng-repeat="exercise in exerciseList" ng-hide="exerciseList.length===0")
           .each-item-component.exercise-main 
             .exercise-name {{exercise.name}}
             .exercise-date {{exercise.created_date}}
           .each-item-component.exercise-status {{exercise.status}}
           .each-item-component.exercise-subject {{exercise.subject}}
-          .each-item-component.exercise-class {{exercise.class_ids.length}}
+          .each-item-component.exercise-class 共{{exercise.class_ids.length}}个班级
           .each-item-component.exercise-view-btn
             .btn 查看详情

@@ -24,7 +24,9 @@
   //   }
   // ];
 
+
   app.controller('ExercisesController', ['$scope', '$http', function($scope, $http){
+    $scope.exerciseList=[];
     $http({
       method: 'GET',
       url: '/api/teacher/list/exercise',
@@ -33,10 +35,8 @@
       console.log("error");
     })
     .success(function(data,status,headers,config){
-      console.log('success');
-      $scope.exerciseList = data;
+      $scope.exerciseList = data.exercises;
       console.log(data);
-      //class_ids格式？
     })
   }]);
 

@@ -23,28 +23,29 @@
       .toolbar-pos-right
         .toolbar-component
           |保存为草稿并退出
-  .editor-stage-wrap
+  .editor-stage-wrap(ng-controller="ExerciseEditController")
     .editor-stage-container
       .display-pane.left-pane2
         h1.text-center {exercise.name}
         .exercise-content-wrap
           .exercise-content-container
-            .each-pb-wrap(nglrepeat="problem in problems")
+            .each-pb-wrap(ng-repeat="problem in problems")
               .each-pb-container
                 .each-pb-header 
-                  i.header-text 第{problem.orderNum}题
-                  select.each-pb-type
-                    option 不定项选择题
-                    option 单选题
+                  i.header-text 第{{problem.orderNum}}题
+                  select.each-pb-type(ng-click="changeType(problem)")
+                    option(ng-selected="problem.type === '单选题'")  单选题
+                    option(ng-selected="problem.type === '不定项选择题'") 不定项选择题
+                    option(ng-selected="problem.type === '主观题'")  主观题
                 .each-pb-content
-                  |{problem.bodyHTML}
-                .each-pb-control(nglshow="true")
+                  |{{problem.bodyHTML}}
+                .each-pb-control(ng-show="hasChoice(problem)")
                   div.each-pb-options
                     i.header-text 正确答案:
-                    i.each-option A
-                    i.each-option B
-                    i.each-option C
-                    i.each-option.selected D
+                    i.each-option(ng-click="clickChoice(problem,$event.target)") A
+                    i.each-option(ng-click="clickChoice(problem,$event.target)") B
+                    i.each-option(ng-click="clickChoice(problem,$event.target)") C
+                    i.each-option(ng-click="clickChoice(problem,$event.target)") D
 
               
       .editor-pane.right-pane
@@ -53,6 +54,7 @@
             .header-text.text-center 题目编辑器
         .editor-body-wrap
           .editor-pb-text-container(contenteditable='true')
+            //- 此处要写一个选择器么么哒
             |{problem.bodyHTML}
           .editor-pb-image-container
             .editor-pb-image-dropbox
