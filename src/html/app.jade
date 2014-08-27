@@ -25,10 +25,7 @@ block body
                 |个人中心
 
 
-    .main-wrap
-      div(ng-view)
+    .main-wrap(ng-view)
 
-block bodyScripts
+block bodyAppend
   script(src="js/app.js")
-  script(type='text/ng-template' id='tch').
-    {{1+1}}

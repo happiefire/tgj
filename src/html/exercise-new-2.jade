@@ -1,0 +1,64 @@
+//- basic style wrap
+.main-wrap(ng-show="false")
+  .toolbar-wrap
+    .toolbar-container
+      .toolbar-pos-left
+        .toolbar-component
+          .page-title 练习编辑器
+      .toolbar-pos-right
+        .toolbar-component
+          |保存为草稿并退出
+  .stage-wrap
+    .stage-container
+      h3 上传试卷吧少年
+      a.btn 上传
+
+//- editor wrap
+.editor-main-wrap(ng-show="true")
+  .toolbar-wrap
+    .toolbar-container
+      .toolbar-pos-left
+        .toolbar-component
+          .page-title 练习编辑器
+      .toolbar-pos-right
+        .toolbar-component
+          |保存为草稿并退出
+  .editor-stage-wrap
+    .editor-stage-container
+      .display-pane.left-pane2
+        h1.text-center {exercise.name}
+        .exercise-content-wrap
+          .exercise-content-container
+            .each-pb-wrap(nglrepeat="problem in problems")
+              .each-pb-container
+                .each-pb-header 
+                  i.header-text 第{problem.orderNum}题
+                  select.each-pb-type
+                    option 不定项选择题
+                    option 单选题
+                .each-pb-content
+                  |{problem.bodyHTML}
+                .each-pb-control(nglshow="true")
+                  div.each-pb-options
+                    i.header-text 正确答案:
+                    i.each-option A
+                    i.each-option B
+                    i.each-option C
+                    i.each-option.selected D
+
+              
+      .editor-pane.right-pane
+        .editor-header-wrap
+          .editor-header-container
+            .header-text.text-center 题目编辑器
+        .editor-body-wrap
+          .editor-pb-text-container(contenteditable='true')
+            |{problem.bodyHTML}
+          .editor-pb-image-container
+            .editor-pb-image-dropbox
+              .placeholder-text +添加题目配图
+        .editor-bottom-controller-wrap
+          .editor-bottom-controller-container
+            .block-btn.btn 确认保存
+
+      

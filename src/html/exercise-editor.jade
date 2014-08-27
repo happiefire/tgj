@@ -1,0 +1,10 @@
+extend base
+
+block headAppend
+  link(rel="stylesheet", type="text/css", href="css/exercise-new.css")
+
+block body
+  .editor-app-wrap(ng-app="editor" ng-view)
+
+block bodyAppend
+  script(src="js/editor.js")
