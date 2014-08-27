@@ -22,11 +22,9 @@
 .stage-wrap(ng-controller="TeachersController as teachers")
   .stage-container
     .stage-pane
-      .teacher-group(ng-repeat="group in teachers.groupsList")
-        .teacher-group-title {{group.groupName}}
-        .each-teacher.each-item.list-view(ng-repeat="teacher in group.members")
-          .each-item-component.teacher-name {{teacher.name}}
-          .each-item-component.teacher-class {{teacher.classNum}}个班级
-          .each-item-component.teacher-subject {{teacher.subject}}
-          .each-item-component.teacher-view-btn
-            .btn 查看教师详情
+      .teacher-group(ng-repeat="teacher in teacherList")
+        .each-item-component.teacher-name {{teacher.name}}
+        //- .each-item-component.teacher-class {{teacher.classNum}}个班级
+        //- .each-item-component.teacher-subject {{teacher.subject}}
+        //- .each-item-component.teacher-view-btn
+          //- .btn 查看教师详情

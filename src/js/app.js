@@ -41,14 +41,30 @@
     $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
   });
 
-  
   app.controller('greeting', ['$scope', '$http', function($scope, $http){
-    $http.get('/api/auth/read/profile').success(function(data, status, headers, config){
+    
+    $http({
+      method: 'GET',
+      url: '/api/auth/read/profile'
+    })
+    .success(function(data, status, headers, config){
       $scope.name = data.name;
       $scope.email = data.email;
-    })
+    });
     
   }]);
   
+
+  // app.controller('controllerName', ['dp1', 'dp2', function()]);
+
+
+
+
+
+
+
+
+
+
     
 })();

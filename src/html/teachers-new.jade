@@ -5,7 +5,7 @@
         .page-title 添加教师
 
   
-.stage-wrap
+.stage-wrap( ng-controller = "TeachersController as teachers")
   .stage-container-left
     form(role="form")
       |填写下表以添加教师或
@@ -32,27 +32,18 @@
           tr
             th.teacher-name 姓名
             th.teacher-email 邮箱
-            th.teacher-tel 手机
-            th.teacher-comment 备注
+            th.teacher-remark 备注
         tbody
-          tr#name-list-row-0
-            td.teacher-name
-              input(type="text" required)
-            td.teacher-email
-              input(type="email" required)
-            td.teacher-tel
-              input(type="text")
-            td.teacher-comment
-              input(type="text")
-          tr#name-list-row-1
-            td.teacher-name
-              input(type="text" required)
-            td.teacher-email
-              input(type="email" required)
-            td.teacher-tel
-              input(type="text")
-            td.teacher-comment
-              input(type="text")
-      a.append-rows.btn 新增1行空表格
+          tr(ng-repeat="teacher in newTeachers")
+            td
+              input(type="text" ng-model="teacher.name")
+            td
+              input(type="email" ng-model="teacher.email")
+            td
+              input(type="text" ng-model="teacher.remark")
+      a.btn(ng-click="appendRow()") +
       br
-      button.btn.btn-default(type="submit") 确定添加
+      button.btn.btn-default(ng-click="submit()") 完成添加
+
+block bodyScripts
+  script(src="js/teachers.js")
