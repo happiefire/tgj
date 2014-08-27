@@ -1,5 +1,6 @@
 (function(){
-  var app = angular.module('tgjapp', ['ngRoute', 'teachers', 'classes', 'exercises']);
+
+  var app = angular.module('tgjapp', ['ngRoute', 'customFilters', 'dashboard', 'teachers', 'classes', 'exercises']);
 
   // route
   app.config(function($routeProvider, $httpProvider){
@@ -40,31 +41,5 @@
     $httpProvider.defaults.xsrfCookieName = 'csrftoken';
     $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
   });
-
-  app.controller('greeting', ['$scope', '$http', function($scope, $http){
-    
-    $http({
-      method: 'GET',
-      url: '/api/auth/read/profile'
-    })
-    .success(function(data, status, headers, config){
-      $scope.name = data.name;
-      $scope.email = data.email;
-    });
-    
-  }]);
-  
-
-  // app.controller('controllerName', ['dp1', 'dp2', function()]);
-
-
-
-
-
-
-
-
-
-
-    
+      
 })();

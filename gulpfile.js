@@ -32,7 +32,7 @@ gulp.task('copy', function() {
 });
 
 
-gulp.task('serve', function(){
+gulp.task('server', function(){
 
   gulp.src('build')
     .pipe(webserver({
@@ -59,4 +59,4 @@ gulp.task('clean', function(){
 
 
 gulp.task('default', ['copy', 'jade', 'stylus', 'coffee']);
-gulp.task('s', ['default', 'serve']);
+gulp.task('serve', ['default', 'server']);

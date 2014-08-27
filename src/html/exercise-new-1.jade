@@ -1,0 +1,30 @@
+.main-wrap  
+  .toolbar-wrap
+    .toolbar-container
+      .toolbar-pos-left
+        .toolbar-component
+          .page-title 练习编辑器
+      .toolbar-pos-right
+        .toolbar-component
+          |保存为草稿并退出
+  .stage-wrap
+    .stage-container
+    
+      h3 基本信息
+      form.exercise-new-form(role="form")
+        .form-group
+          label(for="exercise-new-name")
+            |练习名称
+          input.form-control#exercise-new-name(type="text")
+        .form-group
+          div
+            label 选择参与的班级
+          .checkbox
+            label
+              input(type="checkbox")
+              |甲班
+          .checkbox
+            label
+              input(type="checkbox")
+              |乙班
+        a(href="exercise-editor.html#/editor").btn 下一步
