@@ -9,17 +9,19 @@
       .toolbar-component
         a.btn(href="exercise-new-1.html") 创建新练习
 
-.stage-wrap(ng-controller="ExerciseController as exercises")
+.stage-wrap(ng-controller="ExercisesController as exercises")
   .stage-container
     .stage-pane
       .exercise-group
         .exercise-group-title 所有练习
-        .each-exercise.each-item.list-view(ng-repeat="exercise in exercises.data")
+        .no-exercise-holder(ng-show="exerciseList.length===0")
+          |您还没有创建任何练习，点击右上角创建。
+        .each-exercise.each-item.list-view(ng-repeat="exercise in exerciseList" ng-show="exerciseList.length===0")
           .each-item-component.exercise-main 
             .exercise-name {{exercise.name}}
-            .exercise-date {{exercise.date}}
-          .each-item-component.exercise-status(ng-class) {{exercise.status}}
-          .each-item-component.exercise-class {{exercise.class}}
-          .each-item-component
+            .exercise-date {{exercise.created_date}}
+          .each-item-component.exercise-status {{exercise.status}}
+          .each-item-component.exercise-subject {{exercise.subject}}
+          .each-item-component.exercise-class {{exercise.class_ids.length}}
           .each-item-component.exercise-view-btn
             .btn 查看详情

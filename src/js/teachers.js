@@ -62,7 +62,10 @@
       $http({
         method: 'POST',
         url: '/api/manager/create/teacher',
-        data: {name:target.name,email:target.email}
+        data: $.param({name:target.name,email:target.email}),
+        headers:{
+          "Content-Type":"application/x-www-form-urlencoded"
+        }
       })
       .error(function(data, status, headers, config){
         console.log("error");
@@ -80,7 +83,7 @@
           console.log($scope.newTeachers[i]);
           $scope.submitOne($scope.newTeachers[i])
         }
-      }
+      };
     };
 
   }]);

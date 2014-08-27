@@ -22,7 +22,9 @@
 .stage-wrap(ng-controller="TeachersController as teachers")
   .stage-container
     .stage-pane
-      .teacher-group(ng-repeat="teacher in teacherList")
+      .no-teacher-holder(ng-show="teacherList.length===0")
+        |您还没有创建任何老师，点击右上角创建。
+      .teacher-group(ng-repeat="teacher in teacherList" ng-hide="teacherList.length===0")
         .each-item-component.teacher-name {{teacher.name}}
         //- .each-item-component.teacher-class {{teacher.classNum}}个班级
         //- .each-item-component.teacher-subject {{teacher.subject}}

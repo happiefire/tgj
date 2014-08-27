@@ -10,24 +10,28 @@
 
 .stage-wrap(ng-controller="CreateClassController")
   .stage-container-left
-    form.new-class-form(role="form" ng-show="class.code===undefined")
+    form.new-class-form(role="form")
       .form-group
         label(for="class-name")
-          |班级名称
-        input.form-control#class-name(type="text" placeholder="请填写班级名称（必填）" ng-model='class.name')
+          |班级名称(必填)
+        input.form-control#class-name(type="text" ng-model='class.name')
       .form-group
         label(for="class-teacher")
-          |负责老师
-        p.form-control-static {{teacherName}}
+          |负责老师(必填)
+        button.btn.btn-block#class-teacher(type="button" data-container="body" data-toggle="popover" data-placement="right" title="请选择老师" data-content="teachers") 选择
       .form-group
         label(for="class-subject")
-          |学科
-        p.form-control-static {{teacherSubject | subjectFilter}}
+          |学科(必填)
+        input.form-control#class-comment(type="text")
       //- .form-group
       //-   label(for="class-comment")
       //-     |备注
       //-     input.form-control#class-comment(type="text")
-      
+      .alert.alert-info
+        |请将下面的邀请码告知您的学生，学生可以通过它加入本班
+      .form-group
+        label.control-label 班级邀请码
+        pre.form-control-static {{ newClass.invitationId }}
       //- .form-group
       //-   label 邀请码有效期
       //-   .form-inline
@@ -42,10 +46,4 @@
       //-       label
       //-         input(type="checkbox") 
       //-         |学生通过邀请码加入需要验证？
-      button.btn.btn-block(ng-click = "submit()") 创建班级并生成邀请码
-    .inviteCode(ng-hide="class.code===undefined")
-      .alert.alert-info
-        |请将下面的邀请码告知您的学生，学生可以通过它加入本班
-      .form-group
-        label.control-label 班级邀请码
-        pre.form-control-static {{class.code}}
+      button.btn.btn-block(type="submit") 确认创建班级

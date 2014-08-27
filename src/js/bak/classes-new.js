@@ -1,23 +1,22 @@
-$("input[type='file']").on('click',function(){
-  $("button[type='button']").trigger('click');  
-});
-$('li#toggle-upload').on('click', function(){
-  $('#upload-name-list-view').show();
-  $('#input-name-list-view').hide();
-  $(this).addClass('active');
-  $('li#toggle-input').removeClass('active');
-});
-$('li#toggle-input').on('click',function(){
-  $('#input-name-list-view').show();
-  $('#upload-name-list-view').hide();
-  $(this).addClass('active');
-  $('li#toggle-upload').removeClass('active');
-});
+// $("input[type='file']").on('click',function(){
+//   $("button[type='button']").trigger('click');  
+// });
+// $('li#toggle-upload').on('click', function(){
+//   $('#upload-name-list-view').show();
+//   $('#input-name-list-view').hide();
+//   $(this).addClass('active');
+//   $('li#toggle-input').removeClass('active');
+// });
+// $('li#toggle-input').on('click',function(){
+//   $('#input-name-list-view').show();
+//   $('#upload-name-list-view').hide();
+//   $(this).addClass('active');
+//   $('li#toggle-upload').removeClass('active');
+// });
 $('button#class-teacher').popover({
   placement:"right",
   delay: { "show": 500, "hide": 100 },
   template: '<div class="popover" role="tooltip"><div class="arrow"></div><h1 class="popover-title"></h1><div class="popover-content"></div></div>'
-
 });
 
 
