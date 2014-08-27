@@ -8,12 +8,12 @@
       .toolbar-component
         a.btn(href="app.html#/classes/new") 创建新班级
 
-.stage-wrap(ng-controller = "ClassController as classInfo")
+.stage-wrap(ng-controller="ClassesController as classInfo")
   .stage-container
     .stage-pane
       .class-group
         .class-group-title {{group.groupName}}
-        .each-class.each-item.list-view(ng-repeat = "class in classInfo.data")
+        .each-class.each-item.list-view(ng-repeat = "class in classes")
           .each-item-component.class-name {{class.name}}
           .each-item-component.class-students-number {{class.size + '人'}}
           .each-item-component.class-teacher {{class.teacher}}
