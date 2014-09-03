@@ -9,19 +9,20 @@
       .toolbar-component
         a.btn(href="exercise-editor.html") 创建新练习
 
-.stage-wrap(ng-controller="ExercisesController as exercises")
+.stage-wrap(ng-controller="ExercisesController")
   .stage-container
     .stage-pane
       .exercise-group
         .exercise-group-title 所有练习
-        .no-exercise-holder(ng-show="exerciseList.length===0")
+        .no-exercise-holder(ng-show="exercises.length===0")
           |您还没有创建任何练习，点击右上角创建。
-        .each-exercise.each-item.list-view(ng-repeat="exercise in exerciseList" ng-hide="exerciseList.length===0")
+        .each-exercise.each-item.list-view(ng-repeat="exercise in exercises" ng-hide="exercises.length===0")
           .each-item-component.exercise-main 
-            .exercise-name {{exercise.name}}
+            a(ng-href="/exercise-editor.html#/setting?exercise_id={{exercise.exercise_id}}").exercise-name {{exercise.name}}
             .exercise-date {{exercise.created_date}}
           .each-item-component.exercise-status {{exercise.status}}
           .each-item-component.exercise-subject {{exercise.subject}}
           .each-item-component.exercise-class 共{{exercise.class_ids.length}}个班级
           .each-item-component.exercise-view-btn
-            .btn 查看详情
+            .btn(ng-click="delete(exercise.exercise_id)") 删除练习
+            a.btn(ng-href="/exercise-editor.html#/setting?exercise_id={{exercise.exercise_id}}") 查看详情

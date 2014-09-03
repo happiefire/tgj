@@ -26,7 +26,7 @@
 
 
   app.controller('ExercisesController', ['$scope', '$http', function($scope, $http){
-    $scope.exerciseList=[];
+    $scope.exercises=[];
     $http({
       method: 'GET',
       url: '/api/teacher/list/exercise',
@@ -35,9 +35,32 @@
       console.log("error");
     })
     .success(function(data,status,headers,config){
-      $scope.exerciseList = data.exercises;
+      $scope.exercises = data.exercises;
       console.log(data);
-    })
+    });
+
+  //删除练习（物理性删除）
+    $scope.delete = function(target){
+      for(i=0;i<$scope.exercises.length;i++){
+        if($scope.exercises[i].exercise_id === target){
+          $scope.exercises.splice(i,1);
+          break;
+        }
+        else{}
+      };
+
+      $http({
+        method: 'POST',
+        url: '/api/teacher/delete/exercise/'+target,
+      })
+      .error(function(data, status, headers, config){
+        console.log("error");
+      })
+      .success(function(data,status,headers,config){
+        console.log(data);
+      });
+    };
+
   }]);
 
 })();

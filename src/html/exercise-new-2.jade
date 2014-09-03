@@ -1,66 +1,99 @@
 //- basic style wrap
-.main-wrap(ng-show="false")
-  .toolbar-wrap
-    .toolbar-container
-      .toolbar-pos-left
-        .toolbar-component
-          .page-title 练习编辑器
-      .toolbar-pos-right
-        .toolbar-component
-          |保存为草稿并退出
-  .stage-wrap
-    .stage-container
-      h3 上传试卷吧少年
-      a.btn 上传
+.controller-scope(ng-controller="ExerciseEditController" style='height: 100%;')
+  // 第一页内容
+  .wrap(style='height:100%' ng-show="setting")
+    .main-wrap
+      .toolbar-wrap
+        .toolbar-container
+          .toolbar-pos-left
+            .toolbar-component
+              .page-title 练习编辑器
+          .toolbar-pos-right
+            .toolbar-component
+              |保存为草稿并退出
+      .stage-wrap
+        .stage-container
+        
+          h3 基本信息
+          form.exercise-new-form(role="form")
+            .form-group
+              label(for="exercise-new-name")
+                |练习名称
+              input.form-control#exercise-new-name(type="text" ng-model="exercise_name")
+            .form-group
+              div
+                label 选择参与的班级
+              .checkbox(ng-repeat="class in classes")
+                label
+                  input(type="checkbox" ng-checked="classIsIn(class)" ng-click='addClass(class,$event)')
+                  |{{class.name}}
+            a(ng-click="submitInfo()").btn 提交并进行下一步
+    // End 第一页内容
 
-//- editor wrap
-.editor-main-wrap(ng-show="true")
-  .toolbar-wrap
-    .toolbar-container
-      .toolbar-pos-left
-        .toolbar-component
-          .page-title 练习编辑器
-      .toolbar-pos-right
-        .toolbar-component
-          |保存为草稿并退出
-  .editor-stage-wrap(ng-controller="ExerciseEditController")
-    .editor-stage-container
-      .display-pane.left-pane2
-        h1.text-center {exercise.name}
-        .exercise-content-wrap
-          .exercise-content-container
-            .each-pb-wrap(ng-repeat="problem in problems")
-              .each-pb-container
-                .each-pb-header 
-                  i.header-text 第{{problem.orderNum}}题
-                  select.each-pb-type(ng-click="changeType(problem)")
-                    option(ng-selected="problem.type === '单选题'")  单选题
-                    option(ng-selected="problem.type === '不定项选择题'") 不定项选择题
-                    option(ng-selected="problem.type === '主观题'")  主观题
-                .each-pb-content
-                  |{{problem.bodyHTML}}
-                .each-pb-control(ng-show="hasChoice(problem)")
-                  div.each-pb-options
-                    i.header-text 正确答案:
-                    i.each-option(ng-click="clickChoice(problem,$event.target)") A
-                    i.each-option(ng-click="clickChoice(problem,$event.target)") B
-                    i.each-option(ng-click="clickChoice(problem,$event.target)") C
-                    i.each-option(ng-click="clickChoice(problem,$event.target)") D
+  .wrap(style='height:100%' ng-hide="setting")
+    .main-wrap(ng-hide="hasPb")
+      .toolbar-wrap
+        .toolbar-container
+          .toolbar-pos-left
+            .toolbar-component
+              .page-title 练习编辑器
+          .toolbar-pos-right
+            .toolbar-component
+              |保存为草稿并退出
+      .stage-wrap
+        .stage-container
+          h3 上传试卷吧少年
+          input(type="file" file-model="myFile")
+          a.btn(ng-click="uploadFile()") 上传
 
-              
-      .editor-pane.right-pane
-        .editor-header-wrap
-          .editor-header-container
-            .header-text.text-center 题目编辑器
-        .editor-body-wrap
-          .editor-pb-text-container(contenteditable='true')
-            //- 此处要写一个选择器么么哒
-            |{problem.bodyHTML}
-          .editor-pb-image-container
-            .editor-pb-image-dropbox
-              .placeholder-text +添加题目配图
-        .editor-bottom-controller-wrap
-          .editor-bottom-controller-container
-            .block-btn.btn 确认保存
+    //- editor wrap
+    .editor-main-wrap(ng-show="hasPb")
+      .toolbar-wrap
+        .toolbar-container
+          .toolbar-pos-left
+            .toolbar-component
+              .page-title 练习编辑器
+          .toolbar-pos-right
+            .toolbar-component
+              |保存为草稿并退出
+      .editor-stage-wrap
+        .editor-stage-container
+          .display-pane.left-pane2
+            h1.text-center {{exercise_name}}
+            .exercise-content-wrap
+              .exercise-content-container
+                .each-pb-wrap(ng-repeat="problem in problems")
+                  .each-pb-container
+                    .each-pb-header 
+                      i.header-text 第{{problems.indexOf(problem)+1}}题
+                      select.each-pb-type(ng-model='problem.qtype' ng-options='qtype for qtype in qtypeOptions')
+                    .each-pb-content(ng-bind-html='problem.body')
 
-      
+                    .each-pb-control(ng-show="hasChoice(problem)")
+                      div.each-pb-options
+                        i.header-text 正确答案:
+                        i.each-option(ng-class="{selected: isAnswer(problem,'A')}" ng-click="clickChoice(problem,$event.target)") A
+                        i.each-option(ng-class="{selected: isAnswer(problem,'B')}" ng-click="clickChoice(problem,$event.target)") B
+                        i.each-option(ng-class="{selected: isAnswer(problem,'C')}" ng-click="clickChoice(problem,$event.target)") C
+                        i.each-option(ng-class="{selected: isAnswer(problem,'D')}" ng-click="clickChoice(problem,$event.target)") D
+            //- input(type="file" file-model="myFile")
+            //- a.btn(ng-click="uploadFile()") 重新上传
+            a.btn(ng-click="submitPb()") 完成编辑
+
+                  
+          .editor-pane.right-pane
+            .editor-header-wrap
+              .editor-header-container
+                .header-text.text-center 题目编辑器
+            .editor-body-wrap
+              .editor-pb-text-container(contenteditable='true')
+                //- 此处要写一个选择器么么哒
+                |{problem.bodyHTML}
+              .editor-pb-image-container
+                //- .editor-pb-image-dropbox
+                  .placeholder-text +添加题目配图
+            .editor-bottom-controller-wrap
+              .editor-bottom-controller-container
+                .block-btn.btn 确认保存
+
+          
