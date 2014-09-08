@@ -1,0 +1,57 @@
+
+<div class="toolbar-wrap">
+  <div class="toolbar-container">
+    <div class="toolbar-pos-left">
+      <div class="toolbar-component">
+        <div class="page-title">添加教师</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div ng-controller="TeachersController as teachers" class="stage-wrap">
+  <div class="stage-container-left">
+    <form role="form">填写下表以添加教师或
+      <button data-toggle="modal" data-target="#myModal" class="btn btn-default">上传Excel名单</button>
+      <div id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" class="modal fade">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" data-dismiss="modal" class="close"><span aria-hidden="true">&times</span><span class="sr-only">Close</span></button>
+              <h4 id="myModalLabel" class="modal-title">上传Excel名单</h4>
+            </div>
+            <div class="modal-body">
+              <label class="file-input-wrap">
+                <input id="file-input-field" type="file" name="date"/>
+              </label>
+              <p>目前只接受Excel格式的名单表格(.xls)。<br/>请确保表格格式如下图所示，第一列为教师姓名，第二列为联系方式，第三列为备注。</p><img src="img/example-excel.png" alt="示例名单" width="300px" class="img-thumbnail"/>
+            </div>
+          </div>
+        </div>
+      </div>
+      <table id="name-list" class="new-teachers-table">
+        <thead>
+          <tr>
+            <th class="teacher-name">姓名</th>
+            <th class="teacher-email">邮箱</th>
+            <th class="teacher-remark">备注</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="teacher in newTeachers">
+            <td>
+              <input type="text" ng-model="teacher.name"/>
+            </td>
+            <td>
+              <input type="email" ng-model="teacher.email"/>
+            </td>
+            <td>
+              <input type="text" ng-model="teacher.remark"/>
+            </td>
+          </tr>
+        </tbody>
+      </table><a ng-click="appendRow()" class="btn">+</a><br/>
+      <button ng-click="submit()" class="btn btn-default">完成添加</button>
+    </form>
+  </div>
+</div>
+<script src="js/teachers.js"></script>

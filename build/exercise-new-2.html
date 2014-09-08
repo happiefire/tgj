@@ -1,0 +1,118 @@
+
+<div ng-controller="ExerciseEditController" style="height: 100%;" class="controller-scope">
+  <!-- 第一页内容-->
+  <div style="height:100%" ng-show="setting" class="wrap">
+    <div class="main-wrap">
+      <div class="toolbar-wrap">
+        <div class="toolbar-container">
+          <div class="toolbar-pos-left">
+            <div class="toolbar-component">
+              <div class="page-title">练习编辑器</div>
+            </div>
+          </div>
+          <div class="toolbar-pos-right">
+            <div class="toolbar-component">保存为草稿并退出</div>
+          </div>
+        </div>
+      </div>
+      <div class="stage-wrap">
+        <div class="stage-container">
+          <h3>基本信息</h3>
+          <form role="form" class="exercise-new-form">
+            <div class="form-group">
+              <label for="exercise-new-name">练习名称</label>
+              <input id="exercise-new-name" type="text" ng-model="exercise_name" class="form-control"/>
+            </div>
+            <div class="form-group">
+              <div>
+                <label>选择参与的班级</label>
+              </div>
+              <div ng-repeat="class in classes" class="checkbox">
+                <label>
+                  <input type="checkbox" ng-checked="classIsIn(class)" ng-click="addClass(class,$event)"/>{{class.name}}
+                </label>
+              </div>
+            </div><a ng-click="submitInfo()" class="btn">提交并进行下一步</a>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- End 第一页内容-->
+  </div>
+  <div style="height:100%" ng-hide="setting" class="wrap">
+    <div ng-hide="hasPb" class="main-wrap">
+      <div class="toolbar-wrap">
+        <div class="toolbar-container">
+          <div class="toolbar-pos-left">
+            <div class="toolbar-component">
+              <div class="page-title">练习编辑器</div>
+            </div>
+          </div>
+          <div class="toolbar-pos-right">
+            <div class="toolbar-component">保存为草稿并退出</div>
+          </div>
+        </div>
+      </div>
+      <div class="stage-wrap">
+        <div class="stage-container">
+          <h3>上传试卷吧少年</h3>
+          <input type="file" file-model="myFile"/><a ng-click="uploadFile()" class="btn">上传</a>
+        </div>
+      </div>
+    </div>
+    <div ng-show="hasPb" class="editor-main-wrap">
+      <div class="toolbar-wrap">
+        <div class="toolbar-container">
+          <div class="toolbar-pos-left">
+            <div class="toolbar-component">
+              <div class="page-title">练习编辑器</div>
+            </div>
+          </div>
+          <div class="toolbar-pos-right">
+            <div class="toolbar-component">保存为草稿并退出</div>
+          </div>
+        </div>
+      </div>
+      <div class="editor-stage-wrap">
+        <div class="editor-stage-container">
+          <div class="display-pane left-pane2">
+            <h1 class="text-center">{{exercise_name}}</h1>
+            <div class="exercise-content-wrap">
+              <div class="exercise-content-container">
+                <div ng-repeat="problem in problems" class="each-pb-wrap">
+                  <div class="each-pb-container">
+                    <div class="each-pb-header"><i class="header-text">第{{problems.indexOf(problem)+1}}题</i>
+                      <select ng-model="problem.qtype" ng-options="qtype for qtype in qtypeOptions" class="each-pb-type"></select>
+                    </div>
+                    <div ng-bind-html="problem.body" class="each-pb-content"></div>
+                    <div ng-show="hasChoice(problem)" class="each-pb-control">
+                      <div class="each-pb-options"><i class="header-text">正确答案:</i><i ng-class="{selected: isAnswer(problem,'A')}" ng-click="clickChoice(problem,$event.target)" class="each-option">A</i><i ng-class="{selected: isAnswer(problem,'B')}" ng-click="clickChoice(problem,$event.target)" class="each-option">B</i><i ng-class="{selected: isAnswer(problem,'C')}" ng-click="clickChoice(problem,$event.target)" class="each-option">C</i><i ng-class="{selected: isAnswer(problem,'D')}" ng-click="clickChoice(problem,$event.target)" class="each-option">D</i></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div><a ng-click="submitPb()" class="btn">完成编辑</a>
+          </div>
+          <div class="editor-pane right-pane">
+            <div class="editor-header-wrap">
+              <div class="editor-header-container">
+                <div class="header-text text-center">题目编辑器</div>
+              </div>
+            </div>
+            <div class="editor-body-wrap">
+              <div contenteditable="true" class="editor-pb-text-container">{problem.bodyHTML}
+              </div>
+              <div class="editor-pb-image-container">
+              </div>
+            </div>
+            <div class="editor-bottom-controller-wrap">
+              <div class="editor-bottom-controller-container">
+                <div class="block-btn btn">确认保存</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,32 +1,53 @@
-extend base
-  
-block body
-  .app-wrap(ng-app="tgjapp")
-    
-    .navpane-wrap
-      .navpane
-        .brand
-          |题管家
-        nav.navpane-nav
-          ul
-            li
-              a(href="app.html#/") 控制面板
-            li
-              a(href="app.html#/teachers") 教师管理
-            li
-              a(href="app.html#/classes") 班级与学员
-            li
-              a(href="app.html#/exercises") 练习管理
-        nav.navpane-nav.navpane-nav-bottom
-          ul
-            li
-              a 
-                i.avatar-md
-                |个人中心
+doctype html
+
+html(ng-app="tgjapp")
+  head
+    title 题管家
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible",content="IE=edge")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui")
+    link(rel="stylesheet", type="text/css", href="css/vendor/bootstrap.min.css")
+    link(rel="stylesheet", type="text/css", href="css/vendor/glyphicons.css")
+    link(rel="stylesheet", type="text/css", href="css/main.css")
+    link(rel="stylesheet", type="text/css", href="css/twbs-form-table.css")
+
+    script(type="text/javascript" src="js/vendor/jquery.min.js")
+    script(type="text/javascript" src="js/vendor/bootstrap.min.js")
+    script(type="text/javascript" src="js/vendor/angular.min.js")
+    script(type="text/javascript" src="js/vendor/angular-sanitize.js")
+    script(type="text/javascript" src="js/vendor/angular-ui-router.min.js")
+    script(type="text/javascript" src="js/filters.js")
+    script(type="text/javascript" src="js/dashboard.js")
+    script(type="text/javascript" src="js/teachers.js")
+    script(type="text/javascript" src="js/classes.js")
+    script(type="text/javascript" src="js/exercises.js")
+    script(type="text/javascript" src="js/app.js")
 
 
-    .main-wrap(ng-view)
+  body
+    .app-wrap
+      .navpane-wrap
+        .navpane
+          .brand
+            |题管家
+          nav.navpane-nav
+            ul
+              li
+                a(ui-sref="dashboard" ui-sref-active="active") 控制面板
+              li
+                a(ui-sref="teachers" ui-sref-active="active") 教师管理
+              li
+                a(ui-sref="classes" ui-sref-active="active") 班级与学员
+              li
+                a(ui-sref="exercises" ui-sref-active="active") 练习管理
+          nav.navpane-nav.navpane-nav-bottom
+            ul
+              li
+                a 
+                  i.avatar-md
+                  |个人中心
 
+      .main-wrap(ui-view)
 
-block bodyAppend
-  script(src="js/app.js")
+    include templates/classes.jade
+    include templates/exercises.jade

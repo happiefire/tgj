@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html ng-app="tgjapp">
+  <head>
+    <title>题管家</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+    <link rel="stylesheet" type="text/css" href="css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/vendor/glyphicons.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/twbs-form-table.css">
+    <script type="text/javascript" src="js/vendor/jquery.min.js"></script>
+    <script type="text/javascript" src="js/vendor/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/vendor/angular.min.js"></script>
+    <script type="text/javascript" src="js/vendor/angular-sanitize.js"></script>
+    <script type="text/javascript" src="js/vendor/angular-ui-router.min.js"></script>
+    <script type="text/javascript" src="js/filters.js"></script>
+    <script type="text/javascript" src="js/dashboard.js"></script>
+    <script type="text/javascript" src="js/teachers.js"></script>
+    <script type="text/javascript" src="js/classes.js"></script>
+    <script type="text/javascript" src="js/exercises.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+  </head>
+  <body>
+    <div class="app-wrap">
+      <div class="navpane-wrap">
+        <div class="navpane">
+          <div class="brand">题管家</div>
+          <nav class="navpane-nav">
+            <ul>
+              <li><a ui-sref="dashboard" ui-sref-active="active">控制面板</a></li>
+              <li><a ui-sref="teachers" ui-sref-active="active">教师管理</a></li>
+              <li><a ui-sref="classes" ui-sref-active="active">班级与学员</a></li>
+              <li><a ui-sref="exercises" ui-sref-active="active">练习管理</a></li>
+            </ul>
+          </nav>
+          <nav class="navpane-nav navpane-nav-bottom">
+            <ul>
+              <li><a><i class="avatar-md"></i>个人中心</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+      <div ui-view class="main-wrap"></div>
+    </div>
+    <script id="template-classes" type="text/ng-template">
+      <div class="toolbar-wrap">
+        <div class="toolbar-container">
+          <div class="toolbar-pos-left">
+            <div class="toolbar-component">
+              <div class="page-title">班级与学员管理</div>
+            </div>
+          </div>
+          <div class="toolbar-pos-right">
+            <div class="toolbar-component"><a ui-sref="classes-new" class="btn">创建新班级</a></div>
+          </div>
+        </div>
+      </div>
+      <div ng-controller="ClassesController" class="stage-wrap">
+        <div class="stage-container">
+          <div class="stage-pane">
+            <div ng-show="classList.length===0" class="no-class-holder">您还没有创建任何班级，点击右上角创建。</div>
+            <div ng-repeat="class in classList" ng-hide="classList.length===0" class="each-class each-item list-view">
+              <div class="each-item-component class-name">{{class.name}}</div>
+              <div class="each-item-component class-teacher">{{class.subject | subjectFilter}}</div>
+              <div class="each-item-component class-view-btn pull-right">
+                <div class="btn">查看班级</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </script>
+    <script id="template-classes-new" type="text/ng-template">
+      <div class="toolbar-wrap">
+        <div class="toolbar-container">
+          <div class="toolbar-pos-left">
+            <div class="toolbar-component">
+              <div class="page-title">创建新班级</div>
+            </div>
+          </div>
+          <div class="toolbar-pos-right">
+            <div class="toolbar-component"><a class="btn">完成</a></div>
+          </div>
+        </div>
+      </div>
+      <div ng-controller="CreateClassController" class="stage-wrap">
+        <div class="stage-container-left">
+          <form role="form" ng-show="class.code===undefined" class="new-class-form">
+            <div class="form-group">
+              <label for="class-name">班级名称</label>
+              <input id="class-name" type="text" placeholder="请填写班级名称（必填）" ng-model="class.name" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="class-teacher">负责老师</label>
+              <p class="form-control-static">{{teacherName}}</p>
+            </div>
+            <div class="form-group">
+              <label for="class-subject">学科</label>
+              <p class="form-control-static">{{teacherSubject | subjectFilter}}</p>
+            </div>
+            <button ng-click="submit()" class="btn btn-block">创建班级并生成邀请码</button>
+          </form>
+          <div ng-hide="class.code===undefined" class="inviteCode">
+            <div class="alert alert-info">请将下面的邀请码告知您的学生，学生可以通过它加入本班</div>
+            <div class="form-group">
+              <label class="control-label">班级邀请码</label>
+              <pre class="form-control-static">{{class.code}}</pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </script>
+    <script id="template-exercises" type="text/ng-template">
+      <div class="toolbar-wrap">
+        <div class="toolbar-container">
+          <div class="toolbar-pos-left">
+            <div class="toolbar-component">
+              <div class="page-title">练习管理</div>
+            </div>
+          </div>
+          <div class="toolbar-pos-right">
+            <div class="toolbar-component"><a href="exercise-editor.html" class="btn">创建新练习</a></div>
+          </div>
+        </div>
+      </div>
+      <div ng-controller="ExercisesController" class="stage-wrap">
+        <div class="stage-container">
+          <div class="stage-pane">
+            <div class="exercise-group">
+              <div class="exercise-group-title">所有练习</div>
+              <div ng-show="exercises.length===0" class="no-exercise-holder">您还没有创建任何练习，点击右上角创建。</div>
+              <div ng-repeat="exercise in exercises" ng-hide="exercises.length===0" class="each-exercise each-item list-view">
+                <div class="each-item-component exercise-main"><a ng-href="/exercise-editor.html#/setting?exercise_id={{exercise.exercise_id}}" class="exercise-name">{{exercise.name}}</a>
+                  <div class="exercise-date">{{exercise.created_date}}</div>
+                </div>
+                <div class="each-item-component exercise-status">{{exercise.status}}</div>
+                <div class="each-item-component exercise-subject">{{exercise.subject|subjectFilter}}</div>
+                <div class="each-item-component exercise-class">共{{exercise.class_ids.length}}个班级</div>
+                <div class="each-item-component exercise-view-btn"><a ng-click="delete(exercise.exercise_id)" class="btn">删除练习</a> <a ng-href="/exercise-editor.html#/setting?exercise_id={{exercise.exercise_id}}" class="btn">查看详情</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </script>
+  </body>
+</html>

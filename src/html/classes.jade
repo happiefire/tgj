@@ -8,7 +8,7 @@
       .toolbar-component
         a.btn(href="app.html#/classes/new") 创建新班级
 
-.stage-wrap(ng-controller="ClassesController as classes")
+.stage-wrap(ng-controller="ClassesController")
   .stage-container
     .stage-pane
       .no-class-holder(ng-show="classList.length===0")
@@ -18,6 +18,6 @@
       .each-class.each-item.list-view(ng-repeat = "class in classList" ng-hide="classList.length===0")
         .each-item-component.class-name {{class.name}}
         //- .each-item-component.class-students-number {{class.size + '人'}}
-        .each-item-component.class-teacher {{class.subject}}
-        .each-item-component.class-view-btn
+        .each-item-component.class-teacher {{class.subject | subjectFilter}}
+        .each-item-component.class-view-btn.pull-right
           .btn 查看班级

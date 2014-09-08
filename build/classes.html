@@ -1,0 +1,27 @@
+
+<div class="toolbar-wrap">
+  <div class="toolbar-container">
+    <div class="toolbar-pos-left">
+      <div class="toolbar-component">
+        <div class="page-title">班级与学员管理</div>
+      </div>
+    </div>
+    <div class="toolbar-pos-right">
+      <div class="toolbar-component"><a href="app.html#/classes/new" class="btn">创建新班级</a></div>
+    </div>
+  </div>
+</div>
+<div ng-controller="ClassesController" class="stage-wrap">
+  <div class="stage-container">
+    <div class="stage-pane">
+      <div ng-show="classList.length===0" class="no-class-holder">您还没有创建任何班级，点击右上角创建。</div>
+      <div ng-repeat="class in classList" ng-hide="classList.length===0" class="each-class each-item list-view">
+        <div class="each-item-component class-name">{{class.name}}</div>
+        <div class="each-item-component class-teacher">{{class.subject | subjectFilter}}</div>
+        <div class="each-item-component class-view-btn pull-right">
+          <div class="btn">查看班级</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

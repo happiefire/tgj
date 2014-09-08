@@ -28,9 +28,11 @@ body
   background-color: #fff
   height: $toolbar-height
   padding: 0 20px;
+  white-space: nowrap;
   .toolbar-container
     line-height: $toolbar-height
     position: relative
+    white-space: nowrap;
 
   .toolbar-component
     display: inline-block
@@ -60,6 +62,15 @@ body
   .toolbar-pos-right
     text-align: right
     right: 0
+    .popover
+      line-height: 1.5
+      top: 61px
+      right: 0px
+      left: inherit
+      width: 300px
+      max-width: 1000px
+      display: block
+    
 
 .stage-wrap
   padding: 20px

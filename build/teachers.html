@@ -1,0 +1,38 @@
+
+<div class="toolbar-wrap">
+  <div class="toolbar-container">
+    <div class="toolbar-pos-left">
+      <div class="toolbar-component">
+        <div class="page-title">教师管理</div>
+      </div>
+    </div>
+    <div class="toolbar-pos-right">
+      <div class="toolbar-component"><a id="invite-teacher-btn" ng-click="popoverToggle()" class="btn">邀请教师</a></div>
+      <div id="invite-teacher-popover" ng-show="popoverShow" ng-class="{in:popoverIn}" class="popover fade bottom">
+        <div class="popover-title">填写您想邀请的教师邮箱
+          <div ng-click="popoverToggle()" class="pull-right"><i class="pointer glyphicon glyphicon-remov">×</i></div>
+        </div>
+        <div class="popover-content">
+          <div class="form-inline">
+            <input type="text" placeholder="邮箱" style="width: 200px" class="form-control"/>
+            <div class="btn">邀请</div>
+          </div>
+          <div style="margin-top: 10px;"><a class="small">批量邀请教师</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div ng-controller="TeachersController" class="stage-wrap">
+  <div class="stage-container">
+    <div class="stage-pane">
+      <div ng-show="teacherList.length===0" class="no-teacher-holder">您还没有创建任何老师，点击右上角创建。</div>
+      <div ng-repeat="teacher in teacherList" ng-hide="teacherList.length===0" class="each-teacher each-item list-view">
+        <div class="each-item-component teacher-name">{{teacher.name}}</div>
+        <div class="each-item-component teacher-view-btn pull-right">
+          <div class="btn">查看教师详情</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

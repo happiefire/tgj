@@ -1,0 +1,36 @@
+
+<div class="main-wrap"> 
+  <div class="toolbar-wrap">
+    <div class="toolbar-container">
+      <div class="toolbar-pos-left">
+        <div class="toolbar-component">
+          <div class="page-title">练习编辑器</div>
+        </div>
+      </div>
+      <div class="toolbar-pos-right">
+        <div class="toolbar-component">保存为草稿并退出</div>
+      </div>
+    </div>
+  </div>
+  <div class="stage-wrap">
+    <div ng-controller="ExerciseNewController" class="stage-container">
+      <h3>基本信息</h3>
+      <form role="form" class="exercise-new-form">
+        <div class="form-group">
+          <label for="exercise-new-name">练习名称</label>
+          <input id="exercise-new-name" type="text" ng-model="exercise.name" class="form-control"/>
+        </div>
+        <div class="form-group">
+          <div>
+            <label>选择参与的班级</label>
+          </div>
+          <div ng-repeat="class in classes" class="checkbox">
+            <label>
+              <input type="checkbox" ng-click="checkClass(class,$event.target)"/>{{class.name}}
+            </label>
+          </div>
+        </div><a href="exercise-editor.html#/editor" ng-click="submit()" class="btn">下一步</a>
+      </form>
+    </div>
+  </div>
+</div>

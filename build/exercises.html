@@ -1,0 +1,34 @@
+
+<div class="toolbar-wrap">
+  <div class="toolbar-container">
+    <div class="toolbar-pos-left">
+      <div class="toolbar-component">
+        <div class="page-title">练习管理</div>
+      </div>
+    </div>
+    <div class="toolbar-pos-right">
+      <div class="toolbar-component"><a href="exercise-editor.html" class="btn">创建新练习</a></div>
+    </div>
+  </div>
+</div>
+<div ng-controller="ExercisesController" class="stage-wrap">
+  <div class="stage-container">
+    <div class="stage-pane">
+      <div class="exercise-group">
+        <div class="exercise-group-title">所有练习</div>
+        <div ng-show="exercises.length===0" class="no-exercise-holder">您还没有创建任何练习，点击右上角创建。</div>
+        <div ng-repeat="exercise in exercises" ng-hide="exercises.length===0" class="each-exercise each-item list-view">
+          <div class="each-item-component exercise-main"><a ng-href="/exercise-editor.html#/setting?exercise_id={{exercise.exercise_id}}" class="exercise-name">{{exercise.name}}</a>
+            <div class="exercise-date">{{exercise.created_date}}</div>
+          </div>
+          <div class="each-item-component exercise-status">{{exercise.status}}</div>
+          <div class="each-item-component exercise-subject">{{exercise.subject}}</div>
+          <div class="each-item-component exercise-class">共{{exercise.class_ids.length}}个班级</div>
+          <div class="each-item-component exercise-view-btn">
+            <div ng-click="delete(exercise.exercise_id)" class="btn">删除练习</div><a ng-href="/exercise-editor.html#/setting?exercise_id={{exercise.exercise_id}}" class="btn">查看详情</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

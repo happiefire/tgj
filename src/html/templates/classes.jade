@@ -1,0 +1,87 @@
+//- **********************
+//- class-list view
+//- **********************
+script(id='template-classes' type='text/ng-template')
+
+  .toolbar-wrap
+    .toolbar-container
+      .toolbar-pos-left
+        .toolbar-component
+          .page-title 班级与学员管理
+
+      .toolbar-pos-right
+        .toolbar-component
+          a.btn(ui-sref="classes-new") 创建新班级
+
+  .stage-wrap(ng-controller="ClassesController")
+    .stage-container
+      .stage-pane
+        .no-class-holder(ng-show="classList.length===0")
+          |您还没有创建任何班级，点击右上角创建。
+        //- .class-group
+        //-   .class-group-title {{group.groupName}}
+        .each-class.each-item.list-view(ng-repeat = "class in classList" ng-hide="classList.length===0")
+          .each-item-component.class-name {{class.name}}
+          //- .each-item-component.class-students-number {{class.size + '人'}}
+          .each-item-component.class-teacher {{class.subject | subjectFilter}}
+          .each-item-component.class-view-btn.pull-right
+            .btn 查看班级
+
+
+
+//- **********************
+//- class-new view
+//- **********************
+script(id='template-classes-new' type='text/ng-template')
+
+  .toolbar-wrap
+    .toolbar-container
+      .toolbar-pos-left
+        .toolbar-component
+          .page-title 创建新班级
+
+      .toolbar-pos-right
+        .toolbar-component
+          a.btn 完成
+
+  .stage-wrap(ng-controller="CreateClassController")
+    .stage-container-left
+      form.new-class-form(role="form" ng-show="class.code===undefined")
+        .form-group
+          label(for="class-name")
+            |班级名称
+          input.form-control#class-name(type="text" placeholder="请填写班级名称（必填）" ng-model='class.name')
+        .form-group
+          label(for="class-teacher")
+            |负责老师
+          p.form-control-static {{teacherName}}
+        .form-group
+          label(for="class-subject")
+            |学科
+          p.form-control-static {{teacherSubject | subjectFilter}}
+        //- .form-group
+        //-   label(for="class-comment")
+        //-     |备注
+        //-     input.form-control#class-comment(type="text")
+        
+        //- .form-group
+        //-   label 邀请码有效期
+        //-   .form-inline
+        //-     input.form-control(type="number" style="width: 80px; display: inline-block;")
+        //-     select.form-control
+        //-       option(value="day") 天
+        //-       option(selected="true" value="week") 周
+        //-       option(value="month") 月
+
+        //- .form-group
+        //-     .checkbox
+        //-       label
+        //-         input(type="checkbox") 
+        //-         |学生通过邀请码加入需要验证？
+        button.btn.btn-block(ng-click = "submit()") 创建班级并生成邀请码
+      .inviteCode(ng-hide="class.code===undefined")
+        .alert.alert-info
+          |请将下面的邀请码告知您的学生，学生可以通过它加入本班
+        .form-group
+          label.control-label 班级邀请码
+          pre.form-control-static {{class.code}}

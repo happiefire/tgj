@@ -1,0 +1,39 @@
+
+<div class="toolbar-wrap">
+  <div class="toolbar-container">
+    <div class="toolbar-pos-left">
+      <div class="toolbar-component">
+        <div class="page-title">创建新班级</div>
+      </div>
+    </div>
+    <div class="toolbar-pos-right">
+      <div class="toolbar-component"><a class="btn">完成</a></div>
+    </div>
+  </div>
+</div>
+<div ng-controller="CreateClassController" class="stage-wrap">
+  <div class="stage-container-left">
+    <form role="form" ng-show="class.code===undefined" class="new-class-form">
+      <div class="form-group">
+        <label for="class-name">班级名称</label>
+        <input id="class-name" type="text" placeholder="请填写班级名称（必填）" ng-model="class.name" class="form-control"/>
+      </div>
+      <div class="form-group">
+        <label for="class-teacher">负责老师</label>
+        <p class="form-control-static">{{teacherName}}</p>
+      </div>
+      <div class="form-group">
+        <label for="class-subject">学科</label>
+        <p class="form-control-static">{{teacherSubject | subjectFilter}}</p>
+      </div>
+      <button ng-click="submit()" class="btn btn-block">创建班级并生成邀请码</button>
+    </form>
+    <div ng-hide="class.code===undefined" class="inviteCode">
+      <div class="alert alert-info">请将下面的邀请码告知您的学生，学生可以通过它加入本班</div>
+      <div class="form-group">
+        <label class="control-label">班级邀请码</label>
+        <pre class="form-control-static">{{class.code}}</pre>
+      </div>
+    </div>
+  </div>
+</div>
