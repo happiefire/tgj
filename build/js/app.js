@@ -35,7 +35,7 @@
         templateUrl: 'template-exercises'
       });
 
-    // $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/');
 
     // $http configuration
     $httpProvider.defaults.xsrfCookieName = 'csrftoken';

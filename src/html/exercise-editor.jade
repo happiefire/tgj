@@ -1,10 +1,29 @@
-extend base
+doctype html
 
-block headAppend
-  link(rel="stylesheet", type="text/css", href="css/exercise-new.css")
+html
+  head
+    title 题管家
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible",content="IE=edge")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui")
+    link(rel="stylesheet", type="text/css", href="css/vendor/bootstrap.min.css")
+    link(rel="stylesheet", type="text/css", href="css/vendor/glyphicons.css")
+    link(rel="stylesheet", type="text/css", href="css/main.css")
+    link(rel="stylesheet", type="text/css", href="css/twbs-form-table.css")
+    link(rel="stylesheet", type="text/css", href="css/exercise-new.css")
 
-block body
-  .editor-app-wrap(ng-app="editor" ng-view)
 
-block bodyAppend
-  script(src="js/editor.js")
+  body(ng-app="editor")
+    .editor-app-wrap(ui-view)
+    
+    script(type="text/javascript" src="js/vendor/jquery.min.js")
+    script(type="text/javascript" src="js/vendor/bootstrap.min.js")
+    script(type="text/javascript" src="js/vendor/angular.min.js")
+    script(type="text/javascript" src="js/vendor/angular-sanitize.js")
+    script(type="text/javascript" src="js/vendor/angular-ui-router.min.js")
+    script(type="text/javascript" src="js/filters.js")
+    script(type="text/javascript" src="js/dashboard.js")
+    script(type="text/javascript" src="js/teachers.js")
+    script(type="text/javascript" src="js/classes.js")
+    script(type="text/javascript" src="js/exercises.js")
+    script(type="text/javascript" src="js/editor.js")

@@ -2,7 +2,7 @@
   var app = angular.module('editor', ['ui.router', 'ngSanitize', 'customFilters']);
 
   // route
-  app.config(function($stateProvider, $httpProvider){
+  app.config(function($stateProvider, $httpProvider, $urlRouterProvider){
     $stateProvider
       .state('setting', {
         // controller: 'DashboardController', 
@@ -14,11 +14,13 @@
         url: '/editor',
         templateUrl: '/exercise-new-2.html'
       })
-      .state('/editor/:exercise_id', {
+      .state('whatever', {
         // controller: 'DashboardController', 
         url: '/editor/:exercise_id',
         templateUrl: '/exercise-new-2.html'
       });
+
+    $urlRouterProvider.otherwise('/setting');
 
     // $http configuration
     $httpProvider.defaults.xsrfCookieName = 'csrftoken';
